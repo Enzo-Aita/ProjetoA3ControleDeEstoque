@@ -64,7 +64,7 @@ public void carregaTabela(){
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nome", "Idade", "Curso", "Categoria"
+                "ID", "Nome", "Idade", "Curso", "Fase"
             }
         ));
         JTableAlunos.addMouseListener(new java.awt.event.MouseAdapter() {

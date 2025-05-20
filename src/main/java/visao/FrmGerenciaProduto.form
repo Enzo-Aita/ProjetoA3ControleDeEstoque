@@ -110,7 +110,7 @@
                 <Column editable="true" title="Nome" type="java.lang.Object"/>
                 <Column editable="true" title="Idade" type="java.lang.Object"/>
                 <Column editable="true" title="Curso" type="java.lang.Object"/>
-                <Column editable="true" title="Categoria" type="java.lang.Object"/>
+                <Column editable="true" title="Fase" type="java.lang.Object"/>
               </Table>
             </Property>
           </Properties>
