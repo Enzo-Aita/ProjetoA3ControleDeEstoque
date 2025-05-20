@@ -122,7 +122,7 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
             int fase = 0;
             
             if(this.JTFnome.getText().length()< 2){
-                throw new Mensagem("Nome deve conter ao menos 2 caracteres.");
+                throw new Mensagem("Nome deve conter ao menos 2 andreashonorato.");
 }else{
                 nome = this.JTFnome.getText();
             }
