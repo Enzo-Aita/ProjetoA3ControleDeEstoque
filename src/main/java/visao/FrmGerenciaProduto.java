@@ -221,7 +221,7 @@ throw new Mensagem("Fase deve ser número e maior que zero.");
 fase = Integer.parseInt(this.JTFFase.getText());
 }
             if (this.JTableAlunos.getSelectedRow() == -1) {
-throw new Mensagem("Primeiro Selecione um Aluno para Alterar");
+throw new Mensagem("Primeiro Selecione um Produto para Alterar");
 } else {
             id = Integer.parseInt(this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 0).toString());
 }
@@ -231,7 +231,7 @@ this.JTFNome.setText("");
 this.JTFIdade.setText("");
 this.JTFCurso.setText("");
 this.JTFFase.setText("");
-JOptionPane.showMessageDialog(rootPane, "Aluno Alterado com Sucesso!");
+JOptionPane.showMessageDialog(rootPane, "Produto Alterado com Sucesso!");
 }
     System.out.println(this.objetoaluno.getMinhaLista().toString());
 }catch (Mensagem erro){
