@@ -84,12 +84,12 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuCadastrarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCadastrarAlunoActionPerformed
-        FrmCadastroAluno objeto = new FrmCadastroAluno();
+        FrmCadastroProduto objeto = new FrmCadastroProduto();
         objeto.setVisible(true);
     }//GEN-LAST:event_jMenuCadastrarAlunoActionPerformed
 
     private void jMenuGerenciarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuGerenciarAlunoActionPerformed
-        FrmGerenciaAluno objeto = new FrmGerenciaAluno();
+        FrmGerenciaProduto objeto = new FrmGerenciaProduto();
         objeto.setVisible(true);
     }//GEN-LAST:event_jMenuGerenciarAlunoActionPerformed
 

@@ -6,10 +6,10 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
-public class FrmGerenciaAluno extends javax.swing.JFrame {
+public class FrmGerenciaProduto extends javax.swing.JFrame {
 private Aluno objetoaluno;
     
-    public FrmGerenciaAluno() {
+    public FrmGerenciaProduto() {
         initComponents();
         this.objetoaluno = new Aluno();
         this.carregaTabela();
@@ -64,7 +64,7 @@ public void carregaTabela(){
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nome", "Idade", "Curso", "Fase"
+                "ID", "Nome", "Idade", "Curso", "Categoria"
             }
         ));
         JTableAlunos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -307,21 +307,23 @@ JOptionPane.showMessageDialog(rootPane, "Aluno Alterado com Sucesso!");
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmGerenciaAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmGerenciaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmGerenciaAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmGerenciaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmGerenciaAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmGerenciaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmGerenciaAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmGerenciaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmGerenciaAluno().setVisible(true);
+                new FrmGerenciaProduto().setVisible(true);
             }
         });
     }
