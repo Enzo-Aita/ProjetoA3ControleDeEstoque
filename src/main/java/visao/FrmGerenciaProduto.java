@@ -24,8 +24,8 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
                 a.getId(),
                 a.getNome(),
                 a.getIdade(),
-                a.getCurso(),
-                a.getFase()
+                a.getCategoria(),
+                a.getQuantidade()
             });
 
         }

@@ -6,47 +6,47 @@ import dao.AlunoDao;
 
 public class Aluno extends Pessoa {
     
-    private String curso;
-    private int fase;
+    private String categoria;
+    private int quantidade;
 
     public Aluno() {
         this(0,"",0,"",0);
     }
 
    public Aluno(int id,String nome, int idade,
-String curso, int fase ) {
+String categoria, int quantidade ) {
         super(id, nome, idade);
-        this.curso = curso;
-        this.fase = fase;
+        this.categoria = categoria;
+        this.quantidade = quantidade;
     }
 
-    public String getCurso() {
-        return curso;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setCurso(String curso) {
-        this.curso = curso;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
-    public int getFase() {
-        return fase;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setFase(int fase) {
-        this.fase = fase;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
     @Override
     public String toString(){
-        return super.toString() + "curso=" + curso + ",fase=" + fase;
+        return super.toString() + "categoria=" + categoria + ",quantidade=" + quantidade;
     }
     public ArrayList<Aluno>getMinhaLista(){
         return AlunoDao.getMinhaLista();
     }
     // Cadastra novo aluno
     public boolean insertAlunoBD(String nome, int
-idade, String curso, int fase) {
+idade, String categoria, int quantidade) {
     int id = this.maiorID() + 1;
-    Aluno objeto = new Aluno(id, nome, idade,curso, fase);
+    Aluno objeto = new Aluno(id, nome, idade,categoria, quantidade);
     getMinhaLista().add(objeto);
     return true;
 }
@@ -58,9 +58,9 @@ idade, String curso, int fase) {
 }
 // Edita um aluno específico pelo seu campo ID
     public boolean updateAlunoBD(int id, String nome,
-    int idade, String curso, int fase) {
+    int idade, String categoria, int quantidade) {
     Aluno objeto = new Aluno(id, nome, idade,
-curso, fase );
+categoria, quantidade );
     int indice = this.procuraIndice(id);
     getMinhaLista().set(indice, objeto);
     return true;
