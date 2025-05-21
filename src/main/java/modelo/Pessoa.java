@@ -6,17 +6,17 @@ package modelo;
 
 public class Pessoa {
     private int id;
-    private String nome;
-    private int idade;
+    private String produto;
+    private int preco;
 
     public Pessoa() {
         this(0,"",0);
     }
 
-    public Pessoa(int id, String nome, int idade) {
+    public Pessoa(int id, String produto, int preco) {
         this.id = id;
-        this.nome = nome;
-        this.idade = idade;
+        this.produto = produto;
+        this.preco = preco;
     }
 
     public int getId() {
@@ -27,24 +27,24 @@ public class Pessoa {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getProduto() {
+        return produto;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setProduto(String nome) {
+        this.produto = produto;
     }
 
-    public int getIdade() {
-        return idade;
+    public int getPreco() {
+        return preco;
     }
 
-    public void setIdade(int idade) {
-        this.idade = idade;
+    public void setPreco(int idade) {
+        this.preco = preco;
     }
     @Override
     public String toString(){
-        return "id=" + id +", nome=" +nome + ",idade=" + idade;
+        return "id=" + id +", produto=" + produto + ",preco=" + produto;
     }
     
 }
