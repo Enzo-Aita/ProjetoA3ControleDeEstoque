@@ -4,20 +4,24 @@ package modelo;
 import java.util.ArrayList;
 import dao.AlunoDao;
 
-public class Aluno extends Pessoa {
+public class Produto extends Pessoa {
     
     private String categoria;
     private int quantidade;
+    private int quantidademax;
+    private int quantidademin;
 
-    public Aluno() {
-        this(0,"",0,"",0);
+    public Produto() {
+        this(0,"",0,"",0,0,0);
     }
 
-   public Aluno(int id,String nome, int idade,
-String categoria, int quantidade ) {
+   public Produto(int id,String nome, int idade,
+String categoria, int quantidade, int quantidademax, int quantidademin) {
         super(id, nome, idade);
         this.categoria = categoria;
         this.quantidade = quantidade;
+        this.quantidademax = quantidademax;
+        this.quantidademin = quantidademin;
     }
 
     public String getCategoria() {
@@ -34,19 +38,36 @@ String categoria, int quantidade ) {
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+        
+    }
+
+    public int getQuantidademax() {
+        return quantidademax;
+    }
+
+    public void setQuantidademax(int quantidademax) {
+        this.quantidademax = quantidademax;
+    }
+
+    public int getQuantidademin() {
+        return quantidademin;
+    }
+
+    public void setQuantidademin(int quantidademin) {
+        this.quantidademin = quantidademin;
     }
     @Override
     public String toString(){
-        return super.toString() + "categoria=" + categoria + ",quantidade=" + quantidade;
+        return super.toString() + "categoria=" + categoria + ",quantidade=" + quantidade +",quantidademax=" + quantidademax +",quantidademin=" +quantidademin;
     }
-    public ArrayList<Aluno>getMinhaLista(){
+    public ArrayList<Produto>getMinhaLista(){
         return AlunoDao.getMinhaLista();
     }
     // Cadastra novo aluno
     public boolean insertAlunoBD(String nome, int
 idade, String categoria, int quantidade) {
     int id = this.maiorID() + 1;
-    Aluno objeto = new Aluno(id, nome, idade,categoria, quantidade);
+    Produto objeto = new Produto(id, nome, idade,categoria, quantidade, quantidademax, quantidademin);
     getMinhaLista().add(objeto);
     return true;
 }
@@ -58,9 +79,9 @@ idade, String categoria, int quantidade) {
 }
 // Edita um aluno específico pelo seu campo ID
     public boolean updateAlunoBD(int id, String nome,
-    int idade, String categoria, int quantidade) {
-    Aluno objeto = new Aluno(id, nome, idade,
-categoria, quantidade );
+    int idade, String categoria, int quantidade, int quantidademax, int quantidademin) {
+    Produto objeto = new Produto(id, nome, idade,
+categoria, quantidade, quantidademax, quantidademin );
     int indice = this.procuraIndice(id);
     getMinhaLista().set(indice, objeto);
     return true;
@@ -77,7 +98,7 @@ categoria, quantidade );
 return indice;
 }
 // carrega dados de um aluno específico pelo seu ID
-    public Aluno carregaAluno(int id) {
+    public Produto carregaAluno(int id) {
     int indice = this.procuraIndice(id);
     return getMinhaLista().get(indice);
 }

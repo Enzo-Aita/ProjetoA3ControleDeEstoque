@@ -1,25 +1,25 @@
 package visao;
 
-import modelo.Aluno;
+import modelo.Produto;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class FrmGerenciaProduto extends javax.swing.JFrame {
 
-    private Aluno objetoaluno;
+    private Produto objetoaluno;
 
     public FrmGerenciaProduto() {
         initComponents();
-        this.objetoaluno = new Aluno();
+        this.objetoaluno = new Produto();
         this.carregaTabela();
     }
 
     public void carregaTabela() {
         DefaultTableModel modelo = (DefaultTableModel) this.JTableAlunos.getModel();
         modelo.setNumRows(0);
-        ArrayList<Aluno> minhaLista = objetoaluno.getMinhaLista();
-        for (Aluno a : minhaLista) {
+        ArrayList<Produto> minhaLista = objetoaluno.getMinhaLista();
+        for (Produto a : minhaLista) {
             modelo.addRow(new Object[]{
                 a.getId(),
                 a.getProduto(),
@@ -230,6 +230,8 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
             int preco = 0;
             String categoria = "";
             int quantidade = 0;
+            int quantidademax = 0;
+            int quantidademin = 0;
             if (this.JTFproduto.getText().length() < 2) {
                 throw new Mensagem("Produto deve conter ao menos 2 caracteres.");
             } else {
@@ -255,7 +257,7 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
             } else {
                 id = Integer.parseInt(this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 0).toString());
             }
-            if (this.objetoaluno.updateAlunoBD(id, produto, preco, categoria, quantidade)) {
+            if (this.objetoaluno.updateAlunoBD(id, produto, preco, categoria, quantidade, quantidademax, quantidademin)) {
 
                 this.JTFproduto.setText("");
                 this.JTFpreco.setText("");

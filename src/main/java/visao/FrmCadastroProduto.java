@@ -1,19 +1,19 @@
 
 package visao;
 
-import modelo.Aluno;
+import modelo.Produto;
 import javax.swing.JOptionPane;
 
 
 public class FrmCadastroProduto extends javax.swing.JFrame {
     
-    private Aluno objetoaluno;
+    private Produto objetoaluno;
     
 
    
     public FrmCadastroProduto() {
         initComponents();
-        this.objetoaluno = new Aluno();
+        this.objetoaluno = new Produto();
     }
 
     /**

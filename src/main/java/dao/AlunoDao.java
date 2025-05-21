@@ -1,15 +1,15 @@
 
 package dao;
 import java.util.ArrayList;
-import modelo.Aluno;
+import modelo.Produto;
 
 public class AlunoDao {
-    public static ArrayList<Aluno>minhaLista = new ArrayList<>();
+    public static ArrayList<Produto>minhaLista = new ArrayList<>();
     
-    public static ArrayList<Aluno>getMinhaLista(){
+    public static ArrayList<Produto>getMinhaLista(){
         return minhaLista;
     }
-    public static void setMinhaLista(ArrayList<Aluno>minhaLista){
+    public static void setMinhaLista(ArrayList<Produto>minhaLista){
         AlunoDao.minhaLista = minhaLista;
     }
 
