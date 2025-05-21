@@ -32,7 +32,7 @@
                           <Component id="jLabel1" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
                           <Component id="JTFnome" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
-                          <Component id="JTFidade" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
+                          <Component id="JTFpreco" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
                           <Component id="jLabel3" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
                           <Component id="jLabel4" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
                           <Component id="JTFcurso" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
@@ -60,7 +60,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="JTFidade" min="-2" max="-2" attributes="0"/>
+              <Component id="JTFpreco" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -89,10 +89,10 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Idade:"/>
+        <Property name="text" type="java.lang.String" value="Pre&#xe7;o"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="JTFidade">
+    <Component class="javax.swing.JTextField" name="JTFpreco">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>

@@ -28,7 +28,7 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         JTFnome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        JTFidade = new javax.swing.JTextField();
+        JTFpreco = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         JTFcurso = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -41,7 +41,7 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
 
         jLabel1.setText("Nome:");
 
-        jLabel2.setText("Idade:");
+        jLabel2.setText("Preço");
 
         jLabel3.setText("Curso:");
 
@@ -73,7 +73,7 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(JTFnome, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JTFidade, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JTFpreco, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(JTFcurso, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -95,7 +95,7 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JTFidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JTFpreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -117,7 +117,7 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
     private void JBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastrarActionPerformed
         try {
             String nome = "";
-            int idade = 0;
+            int preco = 0;
             String curso ="";
             int fase = 0;
             
@@ -126,10 +126,10 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
 }else{
                 nome = this.JTFnome.getText();
             }
-            if(this.JTFidade.getText().length()<= 0){
+            if(this.JTFpreco.getText().length()<= 0){
                 throw new Mensagem ("Idade deve ser número e maior que zero.");
 }else{
-                idade = Integer.parseInt(this.JTFidade.getText());
+                preco = Integer.parseInt(this.JTFpreco.getText());
             }
             
             if(this.JTFcurso.getText().length()< 2){
@@ -142,10 +142,10 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
 }else{
                 fase = Integer.parseInt(this.JTFfase.getText());
             }
-            if(this.objetoaluno.insertAlunoBD(nome,idade,curso,fase)){
+            if(this.objetoaluno.insertAlunoBD(nome,preco,curso,fase)){
                     JOptionPane.showMessageDialog(null, "Aluno Cadastrado com Sucesso!");
                     this.JTFnome.setText("");
-                    this.JTFidade.setText("");
+                    this.JTFpreco.setText("");
                     this.JTFcurso.setText("");
                     this.JTFfase.setText("");
             }
@@ -205,8 +205,8 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
     private javax.swing.JButton JBCancelar;
     private javax.swing.JTextField JTFcurso;
     private javax.swing.JTextField JTFfase;
-    private javax.swing.JTextField JTFidade;
     private javax.swing.JTextField JTFnome;
+    private javax.swing.JTextField JTFpreco;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
