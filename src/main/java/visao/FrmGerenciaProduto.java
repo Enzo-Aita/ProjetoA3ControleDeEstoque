@@ -25,7 +25,9 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
                 a.getProduto(),
                 a.getPreco(),
                 a.getCategoria(),
-                a.getQuantidade()
+                a.getQuantidade(),
+                a.getQuantidademax(),
+                a.getQuantidademin()
             });
 
         }
@@ -55,8 +57,8 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
         Apagar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        JTFquantidademax = new javax.swing.JTextField();
+        JTFquantidademin = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerenciamento de Alunos");
@@ -155,11 +157,11 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addComponent(jLabel6)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jTextField2))
+                                        .addComponent(JTFquantidademin))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addComponent(jLabel5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextField1))
+                                        .addComponent(JTFquantidademax))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -199,11 +201,11 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTFquantidademax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTFquantidademin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JBCancelar)
@@ -252,17 +254,31 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
             } else {
                 quantidade = Integer.parseInt(this.JTFquantidade.getText());
             }
+            if (this.JTFquantidademax.getText().length() == 100) {
+                throw new Mensagem("Quantidade Máxima deve ser número");
+            } else {
+                quantidademax = Integer.parseInt(this.JTFquantidademax.getText());
+            }
+             if (this.JTFquantidademin.getText().length() >=20) {
+                throw new Mensagem("Quantidade Mínima deve ser número");
+            } else {
+                quantidademin = Integer.parseInt(this.JTFquantidademin.getText());
+            }
+
             if (this.JTableAlunos.getSelectedRow() == -1) {
                 throw new Mensagem("Primeiro Selecione um Produto para Alterar");
             } else {
                 id = Integer.parseInt(this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 0).toString());
             }
+
             if (this.objetoaluno.updateAlunoBD(id, produto, preco, categoria, quantidade, quantidademax, quantidademin)) {
 
                 this.JTFproduto.setText("");
                 this.JTFpreco.setText("");
                 this.JTFcategoria.setText("");
                 this.JTFquantidade.setText("");
+                this.JTFquantidademax.setText("");
+                this.JTFquantidademin.setText("");
                 JOptionPane.showMessageDialog(rootPane, "Produto Alterado com Sucesso!");
             }
             System.out.println(this.objetoaluno.getMinhaLista().toString());
@@ -287,11 +303,15 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
             String preco = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 2).toString();
             String categoria = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 3).toString();
             String quantidade = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 4).toString();
+            String quantidademax = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(),5).toString();
+             String quantidademin = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(),6).toString();
 
             this.JTFproduto.setText(produto);
             this.JTFpreco.setText(preco);
             this.JTFcategoria.setText(categoria);
             this.JTFquantidade.setText(quantidade);
+            this.JTFquantidademax.setText(quantidademax);
+             this.JTFquantidademin.setText(quantidademin);
 
         }
     }//GEN-LAST:event_JTableAlunosMouseClicked
@@ -311,6 +331,8 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
                     this.JTFpreco.setText("");
                     this.JTFcategoria.setText("");
                     this.JTFquantidade.setText("");
+                    this.JTFquantidademax.setText("");
+                    this.JTFquantidademin.setText("");
                     JOptionPane.showMessageDialog(rootPane, "Produto Apagado com sucesso!");
                 }
             }
@@ -368,6 +390,8 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
     private javax.swing.JTextField JTFpreco;
     private javax.swing.JTextField JTFproduto;
     private javax.swing.JTextField JTFquantidade;
+    private javax.swing.JTextField JTFquantidademax;
+    private javax.swing.JTextField JTFquantidademin;
     private javax.swing.JTable JTableAlunos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -376,7 +400,5 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
