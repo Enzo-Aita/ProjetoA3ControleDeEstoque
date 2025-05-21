@@ -43,13 +43,13 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         JTableAlunos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        JTFNome = new javax.swing.JTextField();
+        JTFproduto = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        JTFPreco = new javax.swing.JTextField();
+        JTFpreco = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        JTFCurso = new javax.swing.JTextField();
+        JTFcategoria = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        JTFFase = new javax.swing.JTextField();
+        JTFquantidade = new javax.swing.JTextField();
         JBCancelar = new javax.swing.JButton();
         JBAlterar = new javax.swing.JButton();
         Apagar = new javax.swing.JButton();
@@ -71,7 +71,7 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nome", "Preço", "Categoria", "Quantidade", "Quantidade Máxima", "Quantidade Mínima"
+                "ID", "Produto", "Preço", "Categoria", "Quantidade", "Quantidade Máxima", "Quantidade Mínima"
             }
         ));
         JTableAlunos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -83,17 +83,17 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
 
         jLabel1.setText("Nome:");
 
-        JTFNome.addActionListener(new java.awt.event.ActionListener() {
+        JTFproduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTFNomeActionPerformed(evt);
+                JTFprodutoActionPerformed(evt);
             }
         });
 
         jLabel2.setText("Preço:");
 
-        JTFPreco.addActionListener(new java.awt.event.ActionListener() {
+        JTFpreco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTFPrecoActionPerformed(evt);
+                JTFprecoActionPerformed(evt);
             }
         });
 
@@ -101,9 +101,9 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
 
         jLabel4.setText("Quantidade:");
 
-        JTFFase.addActionListener(new java.awt.event.ActionListener() {
+        JTFquantidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTFFaseActionPerformed(evt);
+                JTFquantidadeActionPerformed(evt);
             }
         });
 
@@ -137,42 +137,43 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(JBCancelar)
-                .addGap(47, 47, 47)
-                .addComponent(JBAlterar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(Apagar)
-                .addGap(45, 45, 45))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(JTFNome))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel6)
-                            .addGap(18, 18, 18)
-                            .addComponent(jTextField2))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel5)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jTextField1))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(JTFPreco))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(JTFFase, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(JTFCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JTFproduto, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(JBCancelar)
+                                    .addGap(66, 66, 66)
+                                    .addComponent(JBAlterar)
+                                    .addGap(60, 60, 60)
+                                    .addComponent(Apagar))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField2))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jTextField1))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(JTFpreco))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel3))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(JTFcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(JTFquantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(0, 73, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,19 +183,19 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JTFNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JTFproduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(JTFPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTFpreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(JTFCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTFcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(JTFFase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTFquantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -214,9 +215,9 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void JTFFaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFFaseActionPerformed
+    private void JTFquantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFquantidadeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JTFFaseActionPerformed
+    }//GEN-LAST:event_JTFquantidadeActionPerformed
 
     private void JBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarActionPerformed
         this.dispose();
@@ -225,41 +226,41 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
     private void JBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAlterarActionPerformed
         try {
             int id = 0;
-            String nome = "";
+            String produto = "";
             int preco = 0;
-            String curso = "";
-            int fase = 0;
-            if (this.JTFNome.getText().length() < 2) {
-                throw new Mensagem("Nome deve conter ao menos 2 caracteres.");
+            String categoria = "";
+            int quantidade = 0;
+            if (this.JTFproduto.getText().length() < 2) {
+                throw new Mensagem("Produto deve conter ao menos 2 caracteres.");
             } else {
-                nome = this.JTFNome.getText();
+                produto = this.JTFproduto.getText();
             }
-            if (this.JTFPreco.getText().length() <= 0) {
+            if (this.JTFpreco.getText().length() <= 0) {
                 throw new Mensagem("Preço deve ser número e maior que zero.");
             } else {
-                preco = Integer.parseInt(this.JTFPreco.getText());
+                preco = Integer.parseInt(this.JTFpreco.getText());
             }
-            if (this.JTFCurso.getText().length() < 2) {
-                throw new Mensagem("Curso deve conter ao menos 2 caracteres.");
+            if (this.JTFcategoria.getText().length() < 2) {
+                throw new Mensagem("Categoria deve conter ao menos 2 caracteres.");
             } else {
-                curso = this.JTFCurso.getText();
+                categoria = this.JTFcategoria.getText();
             }
-            if (this.JTFFase.getText().length() <= 0) {
-                throw new Mensagem("Fase deve ser número e maior que zero.");
+            if (this.JTFquantidade.getText().length() <= 0) {
+                throw new Mensagem("Quantidade deve ser número e maior que zero.");
             } else {
-                fase = Integer.parseInt(this.JTFFase.getText());
+                quantidade = Integer.parseInt(this.JTFquantidade.getText());
             }
             if (this.JTableAlunos.getSelectedRow() == -1) {
                 throw new Mensagem("Primeiro Selecione um Produto para Alterar");
             } else {
                 id = Integer.parseInt(this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 0).toString());
             }
-            if (this.objetoaluno.updateAlunoBD(id, nome, preco, curso, fase)) {
+            if (this.objetoaluno.updateAlunoBD(id, produto, preco, categoria, quantidade)) {
 
-                this.JTFNome.setText("");
-                this.JTFPreco.setText("");
-                this.JTFCurso.setText("");
-                this.JTFFase.setText("");
+                this.JTFproduto.setText("");
+                this.JTFpreco.setText("");
+                this.JTFcategoria.setText("");
+                this.JTFquantidade.setText("");
                 JOptionPane.showMessageDialog(rootPane, "Produto Alterado com Sucesso!");
             }
             System.out.println(this.objetoaluno.getMinhaLista().toString());
@@ -270,25 +271,25 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_JBAlterarActionPerformed
 
-    private void JTFNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFNomeActionPerformed
+    private void JTFprodutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFprodutoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JTFNomeActionPerformed
+    }//GEN-LAST:event_JTFprodutoActionPerformed
 
-    private void JTFPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFPrecoActionPerformed
+    private void JTFprecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFprecoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JTFPrecoActionPerformed
+    }//GEN-LAST:event_JTFprecoActionPerformed
 
     private void JTableAlunosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTableAlunosMouseClicked
         if (this.JTableAlunos.getSelectedRow() != -1) {
-            String nome = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 1).toString();
-            String idade = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 2).toString();
-            String curso = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 3).toString();
-            String fase = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 4).toString();
+            String produto = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 1).toString();
+            String preco = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 2).toString();
+            String categoria = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 3).toString();
+            String quantidade = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 4).toString();
 
-            this.JTFNome.setText(nome);
-            this.JTFPreco.setText(idade);
-            this.JTFCurso.setText(curso);
-            this.JTFFase.setText(fase);
+            this.JTFproduto.setText(produto);
+            this.JTFpreco.setText(preco);
+            this.JTFcategoria.setText(categoria);
+            this.JTFquantidade.setText(quantidade);
 
         }
     }//GEN-LAST:event_JTableAlunosMouseClicked
@@ -297,18 +298,18 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
         try {
             int id = 0;
             if (this.JTableAlunos.getSelectedRow() == -1) {
-                throw new Mensagem("Primeiro Selecione um Aluno para APAGAR");
+                throw new Mensagem("Primeiro Selecione um Produto para APAGAR");
             } else {
                 id = Integer.parseInt(this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 0).toString());
             }
-            int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar esse aluno?");
+            int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar esse Produto?");
             if (respostaUsuario == 0) {
                 if (this.objetoaluno.deleteAlunoBD(id)) {
-                    this.JTFNome.setText("");
-                    this.JTFPreco.setText("");
-                    this.JTFCurso.setText("");
-                    this.JTFFase.setText("");
-                    JOptionPane.showMessageDialog(rootPane, "Aluno Apagado com sucesso!");
+                    this.JTFproduto.setText("");
+                    this.JTFpreco.setText("");
+                    this.JTFcategoria.setText("");
+                    this.JTFquantidade.setText("");
+                    JOptionPane.showMessageDialog(rootPane, "Produto Apagado com sucesso!");
                 }
             }
             System.out.println(this.objetoaluno.getMinhaLista().toString());
@@ -361,10 +362,10 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
     private javax.swing.JButton Apagar;
     private javax.swing.JButton JBAlterar;
     private javax.swing.JButton JBCancelar;
-    private javax.swing.JTextField JTFCurso;
-    private javax.swing.JTextField JTFFase;
-    private javax.swing.JTextField JTFNome;
-    private javax.swing.JTextField JTFPreco;
+    private javax.swing.JTextField JTFcategoria;
+    private javax.swing.JTextField JTFpreco;
+    private javax.swing.JTextField JTFproduto;
+    private javax.swing.JTextField JTFquantidade;
     private javax.swing.JTable JTableAlunos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
