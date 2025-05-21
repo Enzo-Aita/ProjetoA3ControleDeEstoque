@@ -65,7 +65,7 @@ String categoria, int quantidade, int quantidademax, int quantidademin) {
     }
     // Cadastra novo aluno
     public boolean insertAlunoBD(String nome, int
-idade, String categoria, int quantidade) {
+idade, String categoria, int quantidade, int quantidademax, int quantidademin) {
     int id = this.maiorID() + 1;
     Produto objeto = new Produto(id, nome, idade,categoria, quantidade, quantidademax, quantidademin);
     getMinhaLista().add(objeto);

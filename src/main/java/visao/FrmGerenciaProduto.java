@@ -259,7 +259,7 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
             } else {
                 quantidademax = Integer.parseInt(this.JTFquantidademax.getText());
             }
-             if (this.JTFquantidademin.getText().length() >=20) {
+             if (this.JTFquantidademin.getText().length() ==20) {
                 throw new Mensagem("Quantidade Mínima deve ser número");
             } else {
                 quantidademin = Integer.parseInt(this.JTFquantidademin.getText());
