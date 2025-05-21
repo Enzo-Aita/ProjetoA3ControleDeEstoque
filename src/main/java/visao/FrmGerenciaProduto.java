@@ -22,8 +22,8 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
         for (Aluno a : minhaLista) {
             modelo.addRow(new Object[]{
                 a.getId(),
-                a.getNome(),
-                a.getIdade(),
+                a.getProduto(),
+                a.getPreco(),
                 a.getCategoria(),
                 a.getQuantidade()
             });
