@@ -127,7 +127,7 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
                 nome = this.JTFnome.getText();
             }
             if(this.JTFpreco.getText().length()<= 0){
-                throw new Mensagem ("Idade deve ser número e maior que zero.");
+                throw new Mensagem ("PreÇo deve ser número e maior que zero.");
 }else{
                 preco = Integer.parseInt(this.JTFpreco.getText());
             }
