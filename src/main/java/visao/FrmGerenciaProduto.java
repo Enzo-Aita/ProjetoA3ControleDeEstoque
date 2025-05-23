@@ -7,18 +7,18 @@ import javax.swing.table.DefaultTableModel;
 
 public class FrmGerenciaProduto extends javax.swing.JFrame {
 
-    private Produto objetoaluno;
+    private Produto objetoproduto;
 
     public FrmGerenciaProduto() {
         initComponents();
-        this.objetoaluno = new Produto();
+        this.objetoproduto = new Produto();
         this.carregaTabela();
     }
 
     public void carregaTabela() {
-        DefaultTableModel modelo = (DefaultTableModel) this.JTableAlunos.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) this.JTableProduto.getModel();
         modelo.setNumRows(0);
-        ArrayList<Produto> minhaLista = objetoaluno.getMinhaLista();
+        ArrayList<Produto> minhaLista = objetoproduto.getMinhaLista();
         for (Produto a : minhaLista) {
             modelo.addRow(new Object[]{
                 a.getId(),
@@ -43,7 +43,7 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        JTableAlunos = new javax.swing.JTable();
+        JTableProduto = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         JTFproduto = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -63,7 +63,7 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerenciamento de Alunos");
 
-        JTableAlunos.setModel(new javax.swing.table.DefaultTableModel(
+        JTableProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -76,12 +76,12 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
                 "ID", "Produto", "Preço", "Categoria", "Quantidade", "Quantidade Máxima", "Quantidade Mínima"
             }
         ));
-        JTableAlunos.addMouseListener(new java.awt.event.MouseAdapter() {
+        JTableProduto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JTableAlunosMouseClicked(evt);
+                JTableProdutoMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(JTableAlunos);
+        jScrollPane1.setViewportView(JTableProduto);
 
         jLabel1.setText("Nome:");
 
@@ -274,13 +274,13 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
                 quantidademin = Integer.parseInt(this.JTFquantidademin.getText());
             }
 
-            if (this.JTableAlunos.getSelectedRow() == -1) {
+            if (this.JTableProduto.getSelectedRow() == -1) {
                 throw new Mensagem("Primeiro Selecione um Produto para Alterar");
             } else {
-                id = Integer.parseInt(this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 0).toString());
+                id = Integer.parseInt(this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 0).toString());
             }
 
-            if (this.objetoaluno.updateAlunoBD(id, produto, preco, categoria, quantidade, quantidademax, quantidademin)) {
+            if (this.objetoproduto.updateProdutoBD(id, produto, preco, categoria, quantidade, quantidademax, quantidademin)) {
 
                 this.JTFproduto.setText("");
                 this.JTFpreco.setText("");
@@ -290,7 +290,7 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
                 this.JTFquantidademin.setText("");
                 JOptionPane.showMessageDialog(rootPane, "Produto Adicionado com Sucesso!");
             }
-            System.out.println(this.objetoaluno.getMinhaLista().toString());
+            System.out.println(this.objetoproduto.getMinhaLista().toString());
         } catch (Mensagem erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
         } catch (NumberFormatException erro2) {
@@ -308,14 +308,14 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JTFprecoActionPerformed
 
-    private void JTableAlunosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTableAlunosMouseClicked
-        if (this.JTableAlunos.getSelectedRow() != -1) {
-            String produto = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 1).toString();
-            String preco = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 2).toString();
-            String categoria = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 3).toString();
-            String quantidade = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 4).toString();
-            String quantidademax = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 5).toString();
-            String quantidademin = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 6).toString();
+    private void JTableProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTableProdutoMouseClicked
+        if (this.JTableProduto.getSelectedRow() != -1) {
+            String produto = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 1).toString();
+            String preco = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 2).toString();
+            String categoria = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 3).toString();
+            String quantidade = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 4).toString();
+            String quantidademax = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 5).toString();
+            String quantidademin = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 6).toString();
 
             this.JTFproduto.setText(produto);
             this.JTFpreco.setText(preco);
@@ -325,19 +325,19 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
             this.JTFquantidademin.setText(quantidademin);
 
         }
-    }//GEN-LAST:event_JTableAlunosMouseClicked
+    }//GEN-LAST:event_JTableProdutoMouseClicked
 
     private void ApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApagarActionPerformed
         try {
             int id = 0;
-            if (this.JTableAlunos.getSelectedRow() == -1) {
+            if (this.JTableProduto.getSelectedRow() == -1) {
                 throw new Mensagem("Primeiro Selecione um Produto para APAGAR");
             } else {
-                id = Integer.parseInt(this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 0).toString());
+                id = Integer.parseInt(this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 0).toString());
             }
             int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar esse Produto?");
             if (respostaUsuario == 0) {
-                if (this.objetoaluno.deleteAlunoBD(id)) {
+                if (this.objetoproduto.deleteProdutoBD(id)) {
                     this.JTFproduto.setText("");
                     this.JTFpreco.setText("");
                     this.JTFcategoria.setText("");
@@ -347,7 +347,7 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(rootPane, "Produto Apagado com sucesso!");
                 }
             }
-            System.out.println(this.objetoaluno.getMinhaLista().toString());
+            System.out.println(this.objetoproduto.getMinhaLista().toString());
         } catch (Mensagem erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
         } finally {
@@ -403,7 +403,7 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
     private javax.swing.JTextField JTFquantidade;
     private javax.swing.JTextField JTFquantidademax;
     private javax.swing.JTextField JTFquantidademin;
-    private javax.swing.JTable JTableAlunos;
+    private javax.swing.JTable JTableProduto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -5,11 +5,11 @@ import javax.swing.JOptionPane;
 
 public class FrmCadastroProduto extends javax.swing.JFrame {
 
-    private Produto objetoaluno;
+    private Produto objetoproduto;
 
     public FrmCadastroProduto() {
         initComponents();
-        this.objetoaluno = new Produto();
+        this.objetoproduto = new Produto();
     }
 
     /**
@@ -177,7 +177,7 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
                 quantidademin = Integer.parseInt(this.JTFquantidademin.getText());
             }
 
-            if (this.objetoaluno.insertAlunoBD(produto, preco, categoria, quantidade, quantidademax, quantidademin)) {
+            if (this.objetoproduto.insertProdutoBD(produto, preco, categoria, quantidade, quantidademax, quantidademin)) {
                 JOptionPane.showMessageDialog(null, "Produto Cadastrado com Sucesso!");
                 this.JTFproduto.setText("");
                 this.JTFpreco.setText("");
@@ -186,7 +186,7 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
                 this.JTFquantidademax.setText("");
                 this.JTFquantidademin.setText("");
             }
-            System.out.println(this.objetoaluno.getMinhaLista().toString());
+            System.out.println(this.objetoproduto.getMinhaLista().toString());
 
         } catch (Mensagem erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());

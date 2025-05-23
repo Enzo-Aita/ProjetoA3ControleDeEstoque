@@ -63,22 +63,22 @@ String categoria, int quantidade, int quantidademax, int quantidademin) {
     public ArrayList<Produto>getMinhaLista(){
         return ProdutoDao.getMinhaLista();
     }
-    // Cadastra novo aluno
-    public boolean insertAlunoBD(String nome, int
+    
+    public boolean insertProdutoBD(String nome, int
 idade, String categoria, int quantidade, int quantidademax, int quantidademin) {
     int id = this.maiorID() + 1;
     Produto objeto = new Produto(id, nome, idade,categoria, quantidade, quantidademax, quantidademin);
     getMinhaLista().add(objeto);
     return true;
 }
-// Deleta um aluno específico pelo seu campo ID
-    public boolean deleteAlunoBD(int id) {
+
+    public boolean deleteProdutoBD(int id) {
     int indice = this.procuraIndice(id);
     getMinhaLista().remove(indice);
     return true;
 }
-// Edita um aluno específico pelo seu campo ID
-    public boolean updateAlunoBD(int id, String nome,
+
+    public boolean updateProdutoBD(int id, String nome,
     int idade, String categoria, int quantidade, int quantidademax, int quantidademin) {
     Produto objeto = new Produto(id, nome, idade,
 categoria, quantidade, quantidademax, quantidademin );
@@ -86,8 +86,7 @@ categoria, quantidade, quantidademax, quantidademin );
     getMinhaLista().set(indice, objeto);
     return true;
 }
-// procura o INDICE de objeto da minhaLista que
-// contem o ID enviado.
+
     private int procuraIndice(int id) {
     int indice = -1;
     for (int i = 0; i < getMinhaLista().size(); i++) {
@@ -97,12 +96,12 @@ categoria, quantidade, quantidademax, quantidademin );
 }
 return indice;
 }
-// carrega dados de um aluno específico pelo seu ID
-    public Produto carregaAluno(int id) {
+
+    public Produto carregaProduto(int id) {
     int indice = this.procuraIndice(id);
     return getMinhaLista().get(indice);
 }
-// retorna o maior ID da nossa base de dados
+
 public int maiorID(){
     return ProdutoDao.maiorID();
     
