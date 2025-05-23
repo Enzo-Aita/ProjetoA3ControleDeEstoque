@@ -15,9 +15,9 @@ public class Produto extends Pessoa {
         this(0,"",0,"",0,0,0);
     }
 
-   public Produto(int id,String nome, int idade,
+   public Produto(int id,String produto, int preco,
 String categoria, int quantidade, int quantidademax, int quantidademin) {
-        super(id, nome, idade);
+        super(id, produto, preco);
         this.categoria = categoria;
         this.quantidade = quantidade;
         this.quantidademax = quantidademax;
@@ -64,10 +64,10 @@ String categoria, int quantidade, int quantidademax, int quantidademin) {
         return ProdutoDao.getMinhaLista();
     }
     
-    public boolean insertProdutoBD(String nome, int
-idade, String categoria, int quantidade, int quantidademax, int quantidademin) {
+    public boolean insertProdutoBD(String produto, int
+preco, String categoria, int quantidade, int quantidademax, int quantidademin) {
     int id = this.maiorID() + 1;
-    Produto objeto = new Produto(id, nome, idade,categoria, quantidade, quantidademax, quantidademin);
+    Produto objeto = new Produto(id, produto, preco,categoria, quantidade, quantidademax, quantidademin);
     getMinhaLista().add(objeto);
     return true;
 }
@@ -78,9 +78,9 @@ idade, String categoria, int quantidade, int quantidademax, int quantidademin) {
     return true;
 }
 
-    public boolean updateProdutoBD(int id, String nome,
-    int idade, String categoria, int quantidade, int quantidademax, int quantidademin) {
-    Produto objeto = new Produto(id, nome, idade,
+    public boolean updateProdutoBD(int id, String produto,
+    int preco, String categoria, int quantidade, int quantidademax, int quantidademin) {
+    Produto objeto = new Produto(id, produto, preco,
 categoria, quantidade, quantidademax, quantidademin );
     int indice = this.procuraIndice(id);
     getMinhaLista().set(indice, objeto);
