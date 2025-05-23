@@ -169,6 +169,9 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
 }else{
                 quantidade = Integer.parseInt(this.JTFquantidade.getText());
             }
+            if (quantidade < 20) {
+                throw new Mensagem("Quantidade do produto está abaixo da quantidade mínima");
+            }
             if(this.JTFquantidademax.getText().length()==100){
                 throw new Mensagem ("Quantidade Máxima deve ser número");
             }else{              
