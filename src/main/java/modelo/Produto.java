@@ -2,7 +2,7 @@
 package modelo;
 
 import java.util.ArrayList;
-import dao.AlunoDao;
+import dao.ProdutoDao;
 
 public class Produto extends Pessoa {
     
@@ -61,7 +61,7 @@ String categoria, int quantidade, int quantidademax, int quantidademin) {
         return super.toString() + "categoria=" + categoria + ",quantidade=" + quantidade +",quantidademax=" + quantidademax +",quantidademin=" +quantidademin;
     }
     public ArrayList<Produto>getMinhaLista(){
-        return AlunoDao.getMinhaLista();
+        return ProdutoDao.getMinhaLista();
     }
     // Cadastra novo aluno
     public boolean insertAlunoBD(String nome, int
@@ -104,7 +104,7 @@ return indice;
 }
 // retorna o maior ID da nossa base de dados
 public int maiorID(){
-    return AlunoDao.maiorID();
+    return ProdutoDao.maiorID();
     
 }
 

@@ -3,14 +3,14 @@ package dao;
 import java.util.ArrayList;
 import modelo.Produto;
 
-public class AlunoDao {
+public class ProdutoDao {
     public static ArrayList<Produto>minhaLista = new ArrayList<>();
     
     public static ArrayList<Produto>getMinhaLista(){
         return minhaLista;
     }
     public static void setMinhaLista(ArrayList<Produto>minhaLista){
-        AlunoDao.minhaLista = minhaLista;
+        ProdutoDao.minhaLista = minhaLista;
     }
 
     public static int maiorID(){

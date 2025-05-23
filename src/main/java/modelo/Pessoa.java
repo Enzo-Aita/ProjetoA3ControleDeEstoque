@@ -31,7 +31,7 @@ public class Pessoa {
         return produto;
     }
 
-    public void setProduto(String nome) {
+    public void setProduto(String produto) {
         this.produto = produto;
     }
 
@@ -39,12 +39,12 @@ public class Pessoa {
         return preco;
     }
 
-    public void setPreco(int idade) {
+    public void setPreco(int preco) {
         this.preco = preco;
     }
     @Override
     public String toString(){
-        return "id=" + id +", produto=" + produto + ",preco=" + produto;
+        return "id=" + id +", produto=" + produto + ",preco=" + preco;
     }
     
 }
