@@ -257,12 +257,18 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
             if (quantidade < 20) {
                 throw new Mensagem("Quantidade do produto está abaixo da quantidade mínima");
             }
+            if (quantidade == 20) {
+                throw new Mensagem("Quantidade mínima atingida, você deve comprar mais produtos");
+            }
+            if (quantidade > 100) {
+                throw new Mensagem("quantidade acima da quantidade Máxima");
+            }
             if (this.JTFquantidademax.getText().length() == 100) {
                 throw new Mensagem("Quantidade Máxima deve ser número");
             } else {
                 quantidademax = Integer.parseInt(this.JTFquantidademax.getText());
             }
-             if (this.JTFquantidademin.getText().length() ==20) {
+            if (this.JTFquantidademin.getText().length() == 20) {
                 throw new Mensagem("Quantidade Mínima deve ser número");
             } else {
                 quantidademin = Integer.parseInt(this.JTFquantidademin.getText());
@@ -282,10 +288,12 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
                 this.JTFquantidade.setText("");
                 this.JTFquantidademax.setText("");
                 this.JTFquantidademin.setText("");
-                JOptionPane.showMessageDialog(rootPane, "Produto Alterado com Sucesso!");
+                JOptionPane.showMessageDialog(rootPane, "Produto Adicionado com Sucesso!");
             }
             System.out.println(this.objetoaluno.getMinhaLista().toString());
         } catch (Mensagem erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        } catch (NumberFormatException erro2) {
             JOptionPane.showMessageDialog(null, "Informe um número válido.");
         } finally {
             carregaTabela();
@@ -306,15 +314,15 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
             String preco = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 2).toString();
             String categoria = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 3).toString();
             String quantidade = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 4).toString();
-            String quantidademax = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(),5).toString();
-             String quantidademin = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(),6).toString();
+            String quantidademax = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 5).toString();
+            String quantidademin = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 6).toString();
 
             this.JTFproduto.setText(produto);
             this.JTFpreco.setText(preco);
             this.JTFcategoria.setText(categoria);
             this.JTFquantidade.setText(quantidade);
             this.JTFquantidademax.setText(quantidademax);
-             this.JTFquantidademin.setText(quantidademin);
+            this.JTFquantidademin.setText(quantidademin);
 
         }
     }//GEN-LAST:event_JTableAlunosMouseClicked

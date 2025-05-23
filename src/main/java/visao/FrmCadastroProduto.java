@@ -1,16 +1,12 @@
-
 package visao;
 
 import modelo.Produto;
 import javax.swing.JOptionPane;
 
-
 public class FrmCadastroProduto extends javax.swing.JFrame {
-    
-    private Produto objetoaluno;
-    
 
-   
+    private Produto objetoaluno;
+
     public FrmCadastroProduto() {
         initComponents();
         this.objetoaluno = new Produto();
@@ -143,61 +139,59 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
         try {
             String produto = "";
             int preco = 0;
-            String categoria ="";
+            String categoria = "";
             int quantidade = 0;
             int quantidademax = 0;
             int quantidademin = 0;
-            
-            if(this.JTFproduto.getText().length()< 2){
+
+            if (this.JTFproduto.getText().length() < 2) {
                 throw new Mensagem("Produto deve conter ao menos 2 caracteres.");
-}else{
+            } else {
                 produto = this.JTFproduto.getText();
             }
-            if(this.JTFpreco.getText().length()<= 0){
-                throw new Mensagem ("Preço deve ser número e maior que zero.");
-}else{
+            if (this.JTFpreco.getText().length() <= 0) {
+                throw new Mensagem("Preço deve ser número e maior que zero.");
+            } else {
                 preco = Integer.parseInt(this.JTFpreco.getText());
             }
-            
-            if(this.JTFcategoria.getText().length()< 2){
+
+            if (this.JTFcategoria.getText().length() < 2) {
                 throw new Mensagem("Categoria deve conter ao menos 2 caracteres.");
-}else{
+            } else {
                 categoria = this.JTFcategoria.getText();
             }
-            if(this.JTFquantidade.getText().length()<=0){
-                throw new Mensagem ("Quantidade deve ser número e maior que zero.");
-}else{
+            if (this.JTFquantidade.getText().length() <= 0) {
+                throw new Mensagem("Quantidade deve ser número e maior que zero.");
+            } else {
                 quantidade = Integer.parseInt(this.JTFquantidade.getText());
             }
-            if (quantidade < 20) {
-                throw new Mensagem("Quantidade do produto está abaixo da quantidade mínima");
-            }
-            if(this.JTFquantidademax.getText().length()==100){
-                throw new Mensagem ("Quantidade Máxima deve ser número");
-            }else{              
+
+            if (this.JTFquantidademax.getText().length() == 100) {
+                throw new Mensagem("Quantidade Máxima deve ser número");
+            } else {
                 quantidademax = Integer.parseInt(this.JTFquantidademax.getText());
-       }
-            if(this.JTFquantidademin.getText().length() ==20){
-                throw new Mensagem ("Quantidade Mínima deve ser número");
-            }else{              
+            }
+            if (this.JTFquantidademin.getText().length() == 20) {
+                throw new Mensagem("Quantidade Mínima deve ser número");
+            } else {
                 quantidademin = Integer.parseInt(this.JTFquantidademin.getText());
             }
-            
-            if(this.objetoaluno.insertAlunoBD(produto,preco,categoria,quantidade,quantidademax,quantidademin)){
-                    JOptionPane.showMessageDialog(null, "Produto Cadastrado com Sucesso!");
-                    this.JTFproduto.setText("");
-                    this.JTFpreco.setText("");
-                    this.JTFcategoria.setText("");
-                    this.JTFquantidade.setText("");
-                    this.JTFquantidademax.setText("");
-                    this.JTFquantidademin.setText("");
+
+            if (this.objetoaluno.insertAlunoBD(produto, preco, categoria, quantidade, quantidademax, quantidademin)) {
+                JOptionPane.showMessageDialog(null, "Produto Cadastrado com Sucesso!");
+                this.JTFproduto.setText("");
+                this.JTFpreco.setText("");
+                this.JTFcategoria.setText("");
+                this.JTFquantidade.setText("");
+                this.JTFquantidademax.setText("");
+                this.JTFquantidademin.setText("");
             }
             System.out.println(this.objetoaluno.getMinhaLista().toString());
-            
-        }catch (Mensagem erro){
+
+        } catch (Mensagem erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
-}catch (NumberFormatException erro2){
-    JOptionPane.showMessageDialog(null, "Informe um número válido.");
+        } catch (NumberFormatException erro2) {
+            JOptionPane.showMessageDialog(null, "Informe um número válido.");
         }
     }//GEN-LAST:event_JBCadastrarActionPerformed
 
