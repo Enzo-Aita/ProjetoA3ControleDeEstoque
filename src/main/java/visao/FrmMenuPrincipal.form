@@ -11,7 +11,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuCadastrarAluno">
               <Properties>
-                <Property name="text" type="java.lang.String" value="CadastrarAluno"/>
+                <Property name="text" type="java.lang.String" value="CadastrarProduto"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuCadastrarAlunoActionPerformed"/>
@@ -19,10 +19,18 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuGerenciarAluno">
               <Properties>
-                <Property name="text" type="java.lang.String" value="GerenciarAluno"/>
+                <Property name="text" type="java.lang.String" value="GerenciarProduto"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuGerenciarAlunoActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuAdicionarSubtrairProduto">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="AdicionarSubtrairProduto"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuAdicionarSubtrairProdutoActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuSair">

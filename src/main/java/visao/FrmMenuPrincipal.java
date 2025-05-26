@@ -23,6 +23,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         jMenuArquivo = new javax.swing.JMenu();
         jMenuCadastrarAluno = new javax.swing.JMenuItem();
         jMenuGerenciarAluno = new javax.swing.JMenuItem();
+        jMenuAdicionarSubtrairProduto = new javax.swing.JMenuItem();
         jMenuSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -33,7 +34,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
         jMenuArquivo.setText("Arquivo");
 
-        jMenuCadastrarAluno.setText("CadastrarAluno");
+        jMenuCadastrarAluno.setText("CadastrarProduto");
         jMenuCadastrarAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuCadastrarAlunoActionPerformed(evt);
@@ -41,13 +42,21 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         });
         jMenuArquivo.add(jMenuCadastrarAluno);
 
-        jMenuGerenciarAluno.setText("GerenciarAluno");
+        jMenuGerenciarAluno.setText("GerenciarProduto");
         jMenuGerenciarAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuGerenciarAlunoActionPerformed(evt);
             }
         });
         jMenuArquivo.add(jMenuGerenciarAluno);
+
+        jMenuAdicionarSubtrairProduto.setText("AdicionarSubtrairProduto");
+        jMenuAdicionarSubtrairProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuAdicionarSubtrairProdutoActionPerformed(evt);
+            }
+        });
+        jMenuArquivo.add(jMenuAdicionarSubtrairProduto);
 
         jMenuSair.setText("Sair");
         jMenuSair.addActionListener(new java.awt.event.ActionListener() {
@@ -95,6 +104,11 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         objeto.setVisible(true);
     }//GEN-LAST:event_jMenuCadastrarAlunoActionPerformed
 
+    private void jMenuAdicionarSubtrairProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAdicionarSubtrairProdutoActionPerformed
+        FrmAdicionarSubtrairProduto objeto = new FrmAdicionarSubtrairProduto();
+        objeto.setVisible(true);
+    }//GEN-LAST:event_jMenuAdicionarSubtrairProdutoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -133,6 +147,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenuItem jMenuAdicionarSubtrairProduto;
     private javax.swing.JMenu jMenuArquivo;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuCadastrarAluno;
