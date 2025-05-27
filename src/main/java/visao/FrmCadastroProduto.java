@@ -141,8 +141,8 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
             int preco = 0;
             String categoria = "";
             int quantidade = 0;
-            int quantidademax = 0;
-            int quantidademin = 0;
+            int quantidademax = 150;
+            int quantidademin = 80;
 
             if (this.JTFproduto.getText().length() < 2) {
                 throw new Mensagem("Produto deve conter ao menos 2 caracteres.");
@@ -166,12 +166,12 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
                 quantidade = Integer.parseInt(this.JTFquantidade.getText());
             }
 
-            if (this.JTFquantidademax.getText().length() == 100) {
+            if (this.JTFquantidademax.getText().length() == 150) {
                 throw new Mensagem("Quantidade Máxima deve ser número");
             } else {
                 quantidademax = Integer.parseInt(this.JTFquantidademax.getText());
             }
-            if (this.JTFquantidademin.getText().length() == 20) {
+            if (this.JTFquantidademin.getText().length() == 80) {
                 throw new Mensagem("Quantidade Mínima deve ser número");
             } else {
                 quantidademin = Integer.parseInt(this.JTFquantidademin.getText());

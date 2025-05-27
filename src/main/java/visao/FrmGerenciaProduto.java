@@ -231,8 +231,8 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
             int preco = 0;
             String categoria = "";
             int quantidade = 0;
-            int quantidademax = 0;
-            int quantidademin = 0;
+            int quantidademax = 150;
+            int quantidademin = 80;
             if (this.JTFproduto.getText().length() < 2) {
                 throw new Mensagem("Produto deve conter ao menos 2 caracteres.");
             } else {
@@ -253,21 +253,21 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
             } else {
                 quantidade = Integer.parseInt(this.JTFquantidade.getText());
             }
-            if (quantidade < 20) {
+            if (quantidade < 80) {
                 throw new Mensagem("Quantidade do produto está abaixo da quantidade mínima");
             }
-            if (quantidade == 20) {
+            if (quantidade == 80) {
                 throw new Mensagem("Quantidade mínima atingida, você deve comprar mais produtos");
             }
-            if (quantidade > 100) {
+            if (quantidade > 150) {
                 throw new Mensagem("quantidade acima da quantidade Máxima");
             }
-            if (this.JTFquantidademax.getText().length() == 100) {
+            if (this.JTFquantidademax.getText().length() == 150) {
                 throw new Mensagem("Quantidade Máxima deve ser número");
             } else {
                 quantidademax = Integer.parseInt(this.JTFquantidademax.getText());
             }
-            if (this.JTFquantidademin.getText().length() == 20) {
+            if (this.JTFquantidademin.getText().length() == 80) {
                 throw new Mensagem("Quantidade Mínima deve ser número");
             } else {
                 quantidademin = Integer.parseInt(this.JTFquantidademin.getText());
