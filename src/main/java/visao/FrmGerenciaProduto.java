@@ -59,6 +59,7 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         JTFquantidademax = new javax.swing.JTextField();
         JTFquantidademin = new javax.swing.JTextField();
+        JBReajuste = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerenciamento de Alunos");
@@ -134,6 +135,13 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
 
         jLabel6.setText("Quantidade Mínima:");
 
+        JBReajuste.setText("Reajuste");
+        JBReajuste.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBReajusteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -157,11 +165,13 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
                                     .addComponent(JTFquantidademax)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addGap(53, 53, 53)
+                                    .addGap(10, 10, 10)
                                     .addComponent(JBCancelar)
-                                    .addGap(52, 52, 52)
+                                    .addGap(26, 26, 26)
                                     .addComponent(JBAlterar)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(JBReajuste)
+                                    .addGap(26, 26, 26)
                                     .addComponent(Apagar))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -209,7 +219,8 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JBCancelar)
                     .addComponent(JBAlterar)
-                    .addComponent(Apagar))
+                    .addComponent(Apagar)
+                    .addComponent(JBReajuste))
                 .addGap(37, 37, 37))
         );
 
@@ -354,6 +365,43 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ApagarActionPerformed
 
+    private void JBReajusteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBReajusteActionPerformed
+  try {
+            if (this.JTableProduto.getSelectedRow() == -1) {
+                throw new Mensagem("Primeiro selecione um produto para reajustar.");
+            }
+
+            int row = this.JTableProduto.getSelectedRow();
+            int id = Integer.parseInt(this.JTableProduto.getValueAt(row, 0).toString());
+            Produto produto = objetoproduto.carregaProduto(id);
+
+            String input = JOptionPane.showInputDialog(this, "Digite o percentual de reajuste para o produto \"" + produto.getProduto() + "\":");
+            if (input != null && !input.trim().isEmpty()) {
+                double percentual = Double.parseDouble(input.trim());
+                int precoAtual = (int) produto.getPreco();
+                int novoPreco = (int) Math.round(precoAtual * (1 + percentual / 100.0));
+
+                produto.setPreco(novoPreco);
+
+                objetoproduto.updateProdutoBD(produto.getId(),
+                        produto.getProduto(), (int) produto.getPreco(),
+                        produto.getCategoria(),
+                        produto.getQuantidade(),
+                        produto.getQuantidademax(),
+                        produto.getQuantidademin()
+                );
+
+                JOptionPane.showMessageDialog(this, "Preço do produto atualizado com sucesso!");
+                carregaTabela();
+            }
+
+        } catch (Mensagem e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Informe um número válido.");
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_JBReajusteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -396,6 +444,7 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
     private javax.swing.JButton Apagar;
     private javax.swing.JButton JBAlterar;
     private javax.swing.JButton JBCancelar;
+    private javax.swing.JButton JBReajuste;
     private javax.swing.JTextField JTFcategoria;
     private javax.swing.JTextField JTFpreco;
     private javax.swing.JTextField JTFproduto;

@@ -17,6 +17,7 @@ public class Pessoa {
         this.id = id;
         this.produto = produto;
         this.preco = preco;
+       
     }
 
     public int getId() {
@@ -35,16 +36,17 @@ public class Pessoa {
         this.produto = produto;
     }
 
-    public int getPreco() {
+    public double getPreco() {
         return preco;
     }
 
     public void setPreco(int preco) {
         this.preco = preco;
     }
+
+   
     @Override
     public String toString(){
         return "id=" + id +", produto=" + produto + ",preco=" + preco;
     }
-    
 }

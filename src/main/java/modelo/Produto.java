@@ -1,22 +1,21 @@
-
 package modelo;
 
 import java.util.ArrayList;
 import dao.ProdutoDao;
 
 public class Produto extends Pessoa {
-    
+
     private String categoria;
     private int quantidade;
     private int quantidademax;
     private int quantidademin;
 
     public Produto() {
-        this(0,"",0,"",0,0,0);
+        this(0, "", 0, "", 0, 0, 0);
     }
 
-   public Produto(int id,String produto, int preco,
-String categoria, int quantidade, int quantidademax, int quantidademin) {
+    public Produto(int id, String produto, int preco,
+            String categoria, int quantidade, int quantidademax, int quantidademin) {
         super(id, produto, preco);
         this.categoria = categoria;
         this.quantidade = quantidade;
@@ -38,7 +37,7 @@ String categoria, int quantidade, int quantidademax, int quantidademin) {
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
-        
+
     }
 
     public int getQuantidademax() {
@@ -56,55 +55,57 @@ String categoria, int quantidade, int quantidademax, int quantidademin) {
     public void setQuantidademin(int quantidademin) {
         this.quantidademin = quantidademin;
     }
+
     @Override
-    public String toString(){
-        return super.toString() + "categoria=" + categoria + ",quantidade=" + quantidade +",quantidademax=" + quantidademax +",quantidademin=" +quantidademin;
+    public String toString() {
+        return super.toString() + "categoria=" + categoria + ",quantidade=" + quantidade + ",quantidademax=" + quantidademax + ",quantidademin=" + quantidademin;
     }
-    public ArrayList<Produto>getMinhaLista(){
+
+    public ArrayList<Produto> getMinhaLista() {
         return ProdutoDao.getMinhaLista();
     }
-    
-    public boolean insertProdutoBD(String produto, int
-preco, String categoria, int quantidade, int quantidademax, int quantidademin) {
-    int id = this.maiorID() + 1;
-    Produto objeto = new Produto(id, produto, preco,categoria, quantidade, quantidademax, quantidademin);
-    getMinhaLista().add(objeto);
-    return true;
-}
+
+    public boolean insertProdutoBD(String produto, int preco, String categoria, int quantidade, int quantidademax, int quantidademin) {
+        int id = this.maiorID() + 1;
+        Produto objeto = new Produto(id, produto, preco, categoria, quantidade, quantidademax, quantidademin);
+        getMinhaLista().add(objeto);
+        return true;
+    }
 
     public boolean deleteProdutoBD(int id) {
-    int indice = this.procuraIndice(id);
-    getMinhaLista().remove(indice);
-    return true;
-}
+        int indice = this.procuraIndice(id);
+        getMinhaLista().remove(indice);
+        return true;
+    }
 
     public boolean updateProdutoBD(int id, String produto,
-    int preco, String categoria, int quantidade, int quantidademax, int quantidademin) {
-    Produto objeto = new Produto(id, produto, preco,
-categoria, quantidade, quantidademax, quantidademin );
-    int indice = this.procuraIndice(id);
-    getMinhaLista().set(indice, objeto);
-    return true;
-}
+            int preco, String categoria, int quantidade, int quantidademax, int quantidademin) {
+        Produto objeto = new Produto(id, produto, preco,
+                categoria, quantidade, quantidademax, quantidademin);
+        int indice = this.procuraIndice(id);
+        getMinhaLista().set(indice, objeto);
+        return true;
+    }
 
     private int procuraIndice(int id) {
-    int indice = -1;
-    for (int i = 0; i < getMinhaLista().size(); i++) {
-    if (getMinhaLista().get(i).getId() == id) {
-    indice = i;
-}
-}
-return indice;
-}
+        int indice = -1;
+        for (int i = 0; i < getMinhaLista().size(); i++) {
+            if (getMinhaLista().get(i).getId() == id) {
+                indice = i;
+            }
+        }
+        return indice;
+    }
 
     public Produto carregaProduto(int id) {
-    int indice = this.procuraIndice(id);
-    return getMinhaLista().get(indice);
-}
+        int indice = this.procuraIndice(id);
+        return getMinhaLista().get(indice);
+    }
+
     public String movimentarEstoque(int id, int quantidadeMovimentada, boolean adicionar) {
         Produto produto = carregaProduto(id);
-        
-    if (produto == null) {
+
+        if (produto == null) {
             return "Produto não encontrado.";
         }
 
@@ -150,12 +151,26 @@ return indice;
         return adicionar ? "Produto adicionado com sucesso." : "Produto subtraído com sucesso.";
     }
 
-public int maiorID(){
-    return ProdutoDao.maiorID();
-    
-}
+    public boolean reajustarPrecos(double percentual) {
+        try {
+            ArrayList<Produto> produtos = getMinhaLista();
+
+            for (Produto produto : produtos) {
+                double precoAtual = produto.getPreco();
+                int novoPreco = (int) Math.round(precoAtual * (1 + percentual / 100.0));
+                produto.setPreco(novoPreco);
+            }
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public int maiorID() {
+        return ProdutoDao.maiorID();
+
+    }
 
 }
-    
-    
-
