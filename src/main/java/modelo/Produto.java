@@ -101,7 +101,7 @@ return indice;
     int indice = this.procuraIndice(id);
     return getMinhaLista().get(indice);
 }
-    public String movimentarEstoque(int id, int quantidadeMovimentada, boolean adicionar, boolean subtrair) {
+    public String movimentarEstoque(int id, int quantidadeMovimentada, boolean adicionar) {
         Produto produto = carregaProduto(id);
         
     if (produto == null) {
@@ -115,7 +115,7 @@ return indice;
             return "Erro: A quantidade adicionada não pode ultrapassar " + LIMITE_ENTRADA + " unidades.";
         }
 
-        if (!subtrair && quantidadeMovimentada > LIMITE_SAIDA) {
+        if (!adicionar && quantidadeMovimentada > LIMITE_SAIDA) {
             return "Erro: A quantidade subtraida não pode ultrapassar " + LIMITE_SAIDA + " unidades.";
         }
 
@@ -139,7 +139,7 @@ return indice;
                 produto.getQuantidademin()
         );
 
-        if (!subtrair && novaQuantidade < produto.getQuantidademin()) {
+        if (!adicionar && novaQuantidade < produto.getQuantidademin()) {
             return "Produto subtraído.. Atenção: Estoque abaixo da quantidade mínima. Providencie nova compra.";
         }
 

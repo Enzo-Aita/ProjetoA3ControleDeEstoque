@@ -142,7 +142,7 @@ public class FrmAdicionarSubtrairProduto extends javax.swing.JFrame {
             
             if (textoAdicionar != null && !textoAdicionar.isEmpty()) {
                 int quantidadeAdicionar = Integer.parseInt(textoAdicionar);
-                String mensagemResultado = objetoproduto.movimentarEstoque(id, quantidadeAdicionar, true, false);
+                String mensagemResultado = objetoproduto.movimentarEstoque(id, quantidadeAdicionar, true);
                 
                 JOptionPane.showMessageDialog(this, mensagemResultado);
                 carregaTabela();
@@ -168,7 +168,7 @@ public class FrmAdicionarSubtrairProduto extends javax.swing.JFrame {
             String subtrairUsuario = JOptionPane.showInputDialog("Informe a quantidade de saída:");
             if(subtrairUsuario != null && !subtrairUsuario.isEmpty()) {
                 int quantidade = Integer.parseInt(subtrairUsuario);
-                String mensagemRetorno = objetoproduto.movimentarEstoque(idProduto, quantidade, false, true);
+                String mensagemRetorno = objetoproduto.movimentarEstoque(idProduto, quantidade, false);
                 JOptionPane.showMessageDialog(this, mensagemRetorno);
                 carregaTabela();
             }
