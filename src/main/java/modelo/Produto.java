@@ -101,6 +101,54 @@ return indice;
     int indice = this.procuraIndice(id);
     return getMinhaLista().get(indice);
 }
+    public String movimentarEstoque(int id, int quantidadeMovimentada, boolean adicionar) {
+        Produto produto = carregaProduto(id);
+        
+    if (produto == null) {
+            return "Produto não encontrado.";
+        }
+
+        int LIMITE_ENTRADA = 100;
+        int LIMITE_SAIDA = 80;
+
+        if (adicionar && quantidadeMovimentada > LIMITE_ENTRADA) {
+            return "Erro: A quantidade de entrada não pode ultrapassar " + LIMITE_ENTRADA + " unidades.";
+        }
+
+        if (!adicionar && quantidadeMovimentada > LIMITE_SAIDA) {
+            return "Erro: A quantidade de saída não pode ultrapassar " + LIMITE_SAIDA + " unidades.";
+        }
+
+        int novaQuantidade;
+        if (adicionar) {
+            novaQuantidade = produto.getQuantidade() + quantidadeMovimentada;
+        } else {
+            novaQuantidade = produto.getQuantidade() - quantidadeMovimentada;
+            if (novaQuantidade < 0) {
+                return "Erro: Estoque insuficiente para essa saída.";
+            }
+        }
+
+        produto.setQuantidade(novaQuantidade);
+
+        updateProdutoBD(produto.getId(),
+                produto.getProduto(), (int) produto.getPreco(),
+                produto.getCategoria(),
+                produto.getQuantidade(),
+                produto.getQuantidademax(),
+                produto.getQuantidademin()
+        );
+
+        if (!adicionar && novaQuantidade < produto.getQuantidademin()) {
+            return "Saída realizada. Atenção: Estoque abaixo da quantidade mínima. Providencie nova compra.";
+        }
+
+        if (adicionar && novaQuantidade > produto.getQuantidademax()) {
+            return "Entrada realizada. Atenção: Estoque acima da quantidade máxima. Não compre mais deste produto.";
+        }
+
+        return adicionar ? "Entrada realizada com sucesso." : "Saída realizada com sucesso.";
+    }
 
 public int maiorID(){
     return ProdutoDao.maiorID();

@@ -52,10 +52,6 @@ public class FrmAdicionarSubtrairProduto extends javax.swing.JFrame {
         JBAdicionar = new javax.swing.JButton();
         JBSubtrair = new javax.swing.JButton();
         JBCancelar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        JTFproduto = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        JTFquantidade = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,6 +66,11 @@ public class FrmAdicionarSubtrairProduto extends javax.swing.JFrame {
                 "ID", "Produto", "Preço", "Categoria", "Quantidade", "Quantidade Máxima", "QuantidadeMínima"
             }
         ));
+        JTableProduto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JTableProdutoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(JTableProduto);
 
         JBAdicionar.setText("Adicionar");
@@ -93,10 +94,6 @@ public class FrmAdicionarSubtrairProduto extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Produto:");
-
-        jLabel2.setText("Quantidade:");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,28 +112,12 @@ public class FrmAdicionarSubtrairProduto extends javax.swing.JFrame {
                         .addComponent(JBCancelar)
                         .addGap(0, 134, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(JTFquantidade, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-                    .addComponent(JTFproduto))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JTFproduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(JTFquantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JBAdicionar)
@@ -150,29 +131,24 @@ public class FrmAdicionarSubtrairProduto extends javax.swing.JFrame {
 
     private void JBAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAdicionarActionPerformed
         try {
-            String produto = "";
-            int quantidade = 0;
-            String categoria = "";
-            int preco= 0;
-            int quantidademin = 0;
-            int quantidademax = 0;
+            int linhaselecionada = JTableProduto.getSelectedRow();
+            if (linhaselecionada == -1) {
+                throw new Mensagem ("Selecione um produto para registrar entrada");
+            }
             
-            if (this.JTFproduto.getText().length() < 2) {
-                throw new Mensagem("Produto deve conter ao menos 2 caracteres.");
-            } else {
-                produto = this.JTFproduto.getText();
-            }
-            if (this.JTFquantidade.getText().length() <= 0) {
-                throw new Mensagem("Quantidade deve ser número e maior que zero.");
-            } else {
-                quantidade = Integer.parseInt(this.JTFquantidade.getText());
-            }
-            if (this.objetoproduto.insertProdutoBD(produto,preco, categoria, quantidade, quantidademin, quantidademax)) {
-                JOptionPane.showMessageDialog(null, "Produto Adicionado com Sucesso!");
-                this.JTFproduto.setText("");
-                this.JTFquantidade.setText("");
-            }
-            System.out.println(this.objetoproduto.getMinhaLista().toString());
+            String valorID = JTableProduto.getValueAt(linhaselecionada, 0).toString();
+            int id = Integer.parseInt(valorID);
+            String textoAdicionar = JOptionPane.showInputDialog("Informe a quantidade adicional:");
+            
+            if (textoAdicionar != null && !textoAdicionar.isEmpty()) {
+                int quantidadeAdicionar = Integer.parseInt(textoAdicionar);
+                String mensagemResultado = objetoproduto.movimentarEstoque(id, quantidadeAdicionar, true);
+                
+                JOptionPane.showMessageDialog(this, mensagemResultado);
+                carregaTabela();
+}
+            
+            
             
             } catch (Mensagem erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
@@ -188,6 +164,10 @@ public class FrmAdicionarSubtrairProduto extends javax.swing.JFrame {
     private void JBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_JBCancelarActionPerformed
+
+    private void JTableProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTableProdutoMouseClicked
+        
+    }//GEN-LAST:event_JTableProdutoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -229,11 +209,7 @@ public class FrmAdicionarSubtrairProduto extends javax.swing.JFrame {
     private javax.swing.JButton JBAdicionar;
     private javax.swing.JButton JBCancelar;
     private javax.swing.JButton JBSubtrair;
-    private javax.swing.JTextField JTFproduto;
-    private javax.swing.JTextField JTFquantidade;
     private javax.swing.JTable JTableProduto;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
