@@ -25,6 +25,12 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         jMenuGerenciarAluno = new javax.swing.JMenuItem();
         jMenuAdicionarSubtrairProduto = new javax.swing.JMenuItem();
         jMenuSair = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        JMenuProdutosMinimos = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de Aluno");
@@ -68,6 +74,30 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuArquivo);
 
+        jMenu1.setText("Relatórios");
+
+        jMenuItem1.setText("Lista Preços");
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("Balanço Físico");
+        jMenu1.add(jMenuItem2);
+
+        JMenuProdutosMinimos.setText("Produtos abaixo da quantidade mínima");
+        JMenuProdutosMinimos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenuProdutosMinimosActionPerformed(evt);
+            }
+        });
+        jMenu1.add(JMenuProdutosMinimos);
+
+        jMenuItem4.setText("Produtos abaixo da quantidade máxima");
+        jMenu1.add(jMenuItem4);
+
+        jMenuItem5.setText("Produtos por categoria");
+        jMenu1.add(jMenuItem5);
+
+        jMenuBar1.add(jMenu1);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -109,6 +139,11 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         objeto.setVisible(true);
     }//GEN-LAST:event_jMenuAdicionarSubtrairProdutoActionPerformed
 
+    private void JMenuProdutosMinimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuProdutosMinimosActionPerformed
+FrmProdutosQuantidadeMinima objeto = new FrmProdutosQuantidadeMinima();
+objeto.setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_JMenuProdutosMinimosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -146,12 +181,18 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem JMenuProdutosMinimos;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuAdicionarSubtrairProduto;
     private javax.swing.JMenu jMenuArquivo;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuCadastrarAluno;
     private javax.swing.JMenuItem jMenuGerenciarAluno;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuSair;
     // End of variables declaration//GEN-END:variables
 }
