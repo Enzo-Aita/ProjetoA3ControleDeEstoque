@@ -158,7 +158,28 @@ public class FrmAdicionarSubtrairProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_JBAdicionarActionPerformed
 
     private void JBSubtrairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBSubtrairActionPerformed
-        
+        try {
+            
+            if (JTableProduto.getSelectedRow()  == -1) {
+                throw new Mensagem ("Selecione um produto para registrar saída");
+            }
+            int linhaselecionada = JTableProduto.getSelectedRow();
+            int idProduto =Integer.parseInt(JTableProduto.getValueAt(linhaselecionada, 0).toString());
+            String subtrairUsuario = JOptionPane.showInputDialog("Informe a quantidade de saída:");
+            if(subtrairUsuario != null && !subtrairUsuario.isEmpty()) {
+                int quantidade = Integer.parseInt(subtrairUsuario);
+                String mensagemRetorno = objetoproduto.movimentarEstoque(idProduto, quantidade, false);
+                JOptionPane.showMessageDialog(this, mensagemRetorno);
+                carregaTabela();
+            }
+            
+} catch (Mensagem | NumberFormatException ex) {
+    
+    JOptionPane.showMessageDialog(this, "Erro:" + ex.getMessage());
+            
+            
+            
+        }
     }//GEN-LAST:event_JBSubtrairActionPerformed
 
     private void JBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarActionPerformed
