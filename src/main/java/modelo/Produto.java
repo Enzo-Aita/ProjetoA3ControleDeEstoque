@@ -109,8 +109,8 @@ public class Produto extends Pessoa {
             return "Produto não encontrado.";
         }
 
-        int LIMITE_ENTRADA = 100;
-        int LIMITE_SAIDA = 80;
+        int LIMITE_ENTRADA = 150;
+        int LIMITE_SAIDA = 25;
 
         if (adicionar && quantidadeMovimentada > LIMITE_ENTRADA) {
             return "Erro: A quantidade adicionada não pode ultrapassar " + LIMITE_ENTRADA + " unidades.";

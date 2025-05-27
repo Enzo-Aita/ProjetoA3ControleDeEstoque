@@ -142,7 +142,7 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
             String categoria = "";
             int quantidade = 0;
             int quantidademax = 150;
-            int quantidademin = 80;
+            int quantidademin = 25;
 
             if (this.JTFproduto.getText().length() < 2) {
                 throw new Mensagem("Produto deve conter ao menos 2 caracteres.");
@@ -165,16 +165,32 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
             } else {
                 quantidade = Integer.parseInt(this.JTFquantidade.getText());
             }
+            if (quantidade < 25 ) {
+                JOptionPane.showMessageDialog(null, "Quantidade menor que a minima considere comprar mais");
+            }
 
             if (this.JTFquantidademax.getText().length() == 150) {
                 throw new Mensagem("Quantidade Máxima deve ser número");
             } else {
                 quantidademax = Integer.parseInt(this.JTFquantidademax.getText());
             }
-            if (this.JTFquantidademin.getText().length() == 80) {
+            if (quantidademax > 150) {
+                throw new Mensagem("quantidade acima da quantidade máxima");
+            }
+            if (quantidademax < 150) {
+                throw new Mensagem("quantidade abaixo da quantidade máxima");
+            }
+            if (this.JTFquantidademin.getText().length() == 25) {
                 throw new Mensagem("Quantidade Mínima deve ser número");
             } else {
                 quantidademin = Integer.parseInt(this.JTFquantidademin.getText());
+            }
+            if (quantidademin > 25) {
+                throw new Mensagem("quantidade acima da quantidade mínima");
+            }
+            if (quantidademin < 25) {
+                throw new Mensagem("quantidade abaixo da quantidade mínima");
+
             }
 
             if (this.objetoproduto.insertProdutoBD(produto, preco, categoria, quantidade, quantidademax, quantidademin)) {
