@@ -101,7 +101,7 @@ return indice;
     int indice = this.procuraIndice(id);
     return getMinhaLista().get(indice);
 }
-    public String movimentarEstoque(int id, int quantidadeMovimentada, boolean adicionar) {
+    public String movimentarEstoque(int id, int quantidadeMovimentada, boolean adicionar, boolean subtrair) {
         Produto produto = carregaProduto(id);
         
     if (produto == null) {
@@ -112,11 +112,11 @@ return indice;
         int LIMITE_SAIDA = 80;
 
         if (adicionar && quantidadeMovimentada > LIMITE_ENTRADA) {
-            return "Erro: A quantidade de entrada não pode ultrapassar " + LIMITE_ENTRADA + " unidades.";
+            return "Erro: A quantidade adicionada não pode ultrapassar " + LIMITE_ENTRADA + " unidades.";
         }
 
-        if (!adicionar && quantidadeMovimentada > LIMITE_SAIDA) {
-            return "Erro: A quantidade de saída não pode ultrapassar " + LIMITE_SAIDA + " unidades.";
+        if (!subtrair && quantidadeMovimentada > LIMITE_SAIDA) {
+            return "Erro: A quantidade subtraida não pode ultrapassar " + LIMITE_SAIDA + " unidades.";
         }
 
         int novaQuantidade;
@@ -139,15 +139,15 @@ return indice;
                 produto.getQuantidademin()
         );
 
-        if (!adicionar && novaQuantidade < produto.getQuantidademin()) {
-            return "Saída realizada. Atenção: Estoque abaixo da quantidade mínima. Providencie nova compra.";
+        if (!subtrair && novaQuantidade < produto.getQuantidademin()) {
+            return "Produto subtraído.. Atenção: Estoque abaixo da quantidade mínima. Providencie nova compra.";
         }
 
         if (adicionar && novaQuantidade > produto.getQuantidademax()) {
-            return "Entrada realizada. Atenção: Estoque acima da quantidade máxima. Não compre mais deste produto.";
+            return "Produto adicionado. Atenção: Estoque acima da quantidade máxima. Não compre mais deste produto.";
         }
 
-        return adicionar ? "Entrada realizada com sucesso." : "Saída realizada com sucesso.";
+        return adicionar ? "Produto adicionado com sucesso." : "Produto subtraído com sucesso.";
     }
 
 public int maiorID(){
