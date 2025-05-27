@@ -16,7 +16,7 @@ public class FrmProdutosQuantidadeMinima extends javax.swing.JFrame {
         this.carregarTabela();
     }
     public void carregarTabela() {
-        DefaultTableModel modelo = (DefaultTableModel) this.JTableRelatorio.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) this.JTableRelatorioProdutoMinimo.getModel();
         modelo.setNumRows(0);
         ArrayList<Produto> lista = objetoproduto.getMinhaLista();
         for (Produto a : lista) {
@@ -46,12 +46,12 @@ public class FrmProdutosQuantidadeMinima extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        JTableRelatorio = new javax.swing.JTable();
+        JTableRelatorioProdutoMinimo = new javax.swing.JTable();
         JBCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        JTableRelatorio.setModel(new javax.swing.table.DefaultTableModel(
+        JTableRelatorioProdutoMinimo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -62,9 +62,14 @@ public class FrmProdutosQuantidadeMinima extends javax.swing.JFrame {
                 "ID", "Produto", "Quantidade Atual", "Quantidade Mínima"
             }
         ));
-        jScrollPane1.setViewportView(JTableRelatorio);
+        jScrollPane1.setViewportView(JTableRelatorioProdutoMinimo);
 
         JBCancelar.setText("Cancelar");
+        JBCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,6 +97,10 @@ public class FrmProdutosQuantidadeMinima extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void JBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarActionPerformed
+this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_JBCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,7 +139,7 @@ public class FrmProdutosQuantidadeMinima extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBCancelar;
-    private javax.swing.JTable JTableRelatorio;
+    private javax.swing.JTable JTableRelatorioProdutoMinimo;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
