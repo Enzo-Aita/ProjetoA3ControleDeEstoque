@@ -1,3 +1,8 @@
+
+
+
+
+
 package modelo;
 
 import java.util.ArrayList;
@@ -9,6 +14,8 @@ public class Produto extends Pessoa {
     private int quantidade;
     private int quantidademax;
     private int quantidademin;
+    private ProdutoDao dao;
+    
 
     public Produto() {
         this(0, "", 0, "", 0, 0, 0);
@@ -21,6 +28,7 @@ public class Produto extends Pessoa {
         this.quantidade = quantidade;
         this.quantidademax = quantidademax;
         this.quantidademin = quantidademin;
+        dao = new ProdutoDao();
     }
 
     public String getCategoria() {
@@ -62,19 +70,19 @@ public class Produto extends Pessoa {
     }
 
     public ArrayList<Produto> getMinhaLista() {
-        return ProdutoDao.getMinhaLista();
+        return dao.getMinhaLista();
     }
 
     public boolean insertProdutoBD(String produto, int preco, String categoria, int quantidade, int quantidademax, int quantidademin) {
         int id = this.maiorID() + 1;
         Produto objeto = new Produto(id, produto, preco, categoria, quantidade, quantidademax, quantidademin);
-        getMinhaLista().add(objeto);
+        dao.insertProdutoBD(objeto);
         return true;
     }
 
     public boolean deleteProdutoBD(int id) {
         int indice = this.procuraIndice(id);
-        getMinhaLista().remove(indice);
+        dao.deleteProdutoBD(id);
         return true;
     }
 
@@ -82,8 +90,7 @@ public class Produto extends Pessoa {
             int preco, String categoria, int quantidade, int quantidademax, int quantidademin) {
         Produto objeto = new Produto(id, produto, preco,
                 categoria, quantidade, quantidademax, quantidademin);
-        int indice = this.procuraIndice(id);
-        getMinhaLista().set(indice, objeto);
+        dao.updateProdutoBD(objeto);
         return true;
     }
 
@@ -98,8 +105,7 @@ public class Produto extends Pessoa {
     }
 
     public Produto carregaProduto(int id) {
-        int indice = this.procuraIndice(id);
-        return getMinhaLista().get(indice);
+        return dao.carregaProduto(id);
     }
 
     public String movimentarEstoque(int id, int quantidadeMovimentada, boolean adicionar) {
@@ -169,7 +175,7 @@ public class Produto extends Pessoa {
     }
 
     public int maiorID() {
-        return ProdutoDao.maiorID();
+        return dao.maiorID();
 
     }
 
