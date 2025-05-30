@@ -1,0 +1,18 @@
+CREATE DATABASE IF NOT EXISTS db_produtos;
+
+USE db_produtos;
+
+DROP TABLE IF EXISTS tb_produtos;
+
+CREATE TABLE tb_produtos(
+id INTEGER NOT NULL,
+produto VARCHAR(100),
+preco INTEGER,
+categoria VARCHAR(50),
+quantidade INTEGER,
+quantidademax INTEGER,
+quantidademin INTEGER,
+PRIMARY KEY(id)
+);
+
+show tables;
