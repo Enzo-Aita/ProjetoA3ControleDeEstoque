@@ -30,7 +30,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         JMenuProdutosMinimos = new javax.swing.JMenuItem();
         JMenuProdutoMaximo = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        JMenuProdutoCategoria = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de Aluno");
@@ -98,8 +98,13 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(JMenuProdutoMaximo);
 
-        jMenuItem5.setText("Produtos por categoria");
-        jMenu1.add(jMenuItem5);
+        JMenuProdutoCategoria.setText("Produtos por categoria");
+        JMenuProdutoCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenuProdutoCategoriaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(JMenuProdutoCategoria);
 
         jMenuBar1.add(jMenu1);
 
@@ -154,6 +159,11 @@ objeto.setVisible(true);// TODO add your handling code here:
 objeto.setVisible(true); // TODO add your handling code here:
     }//GEN-LAST:event_JMenuProdutoMaximoActionPerformed
 
+    private void JMenuProdutoCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuProdutoCategoriaActionPerformed
+        FrmProdutosCategoria objeto = new FrmProdutosCategoria();
+        objeto.setVisible(true);
+    }//GEN-LAST:event_JMenuProdutoCategoriaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -191,6 +201,7 @@ objeto.setVisible(true); // TODO add your handling code here:
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem JMenuProdutoCategoria;
     private javax.swing.JMenuItem JMenuProdutoMaximo;
     private javax.swing.JMenuItem JMenuProdutosMinimos;
     private javax.swing.JLabel jLabel1;
@@ -202,7 +213,6 @@ objeto.setVisible(true); // TODO add your handling code here:
     private javax.swing.JMenuItem jMenuGerenciarAluno;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuSair;
     // End of variables declaration//GEN-END:variables
 }
