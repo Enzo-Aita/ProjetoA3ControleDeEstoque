@@ -26,12 +26,13 @@ public class ProdutoDao {
                 int id = res.getInt("id");
                 String produto = res.getString("produto");
                 int preco = res.getInt("preco");
+                String unidade = res.getString("unidade");
                 String categoria = res.getString("categoria");
                 int quantidade = res.getInt("quantidade");
                 int quantidademax = res.getInt("quantidademax");
                 int quantidademin = res.getInt("quantidademin");
                 
-                Produto objeto = new Produto(id,produto,preco,categoria,quantidade,quantidademax,quantidademin);
+                Produto objeto = new Produto(id,produto,preco, unidade, categoria,quantidade,quantidademax,quantidademin);
                 minhaLista.add(objeto); 
             }
            stmt.close();

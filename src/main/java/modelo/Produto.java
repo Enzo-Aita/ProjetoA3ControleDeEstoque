@@ -18,12 +18,12 @@ public class Produto extends Pessoa {
     
 
     public Produto() {
-        this(0, "", 0, "", 0, 0, 0);
+        this(0, "", 0, "","", 0, 0, 0);
     }
 
-    public Produto(int id, String produto, int preco,
+    public Produto(int id, String produto, int preco, String unidade,
             String categoria, int quantidade, int quantidademax, int quantidademin) {
-        super(id, produto, preco);
+        super(id, produto, preco, unidade);
         this.categoria = categoria;
         this.quantidade = quantidade;
         this.quantidademax = quantidademax;
@@ -73,9 +73,9 @@ public class Produto extends Pessoa {
         return dao.getMinhaLista();
     }
 
-    public boolean insertProdutoBD(String produto, int preco, String categoria, int quantidade, int quantidademax, int quantidademin) {
+    public boolean insertProdutoBD(String produto, int preco, String unidade, String categoria, int quantidade, int quantidademax, int quantidademin) {
         int id = this.maiorID() + 1;
-        Produto objeto = new Produto(id, produto, preco, categoria, quantidade, quantidademax, quantidademin);
+        Produto objeto = new Produto(id, produto, preco, unidade, categoria, quantidade, quantidademax, quantidademin);
         dao.insertProdutoBD(objeto);
         return true;
     }
@@ -87,8 +87,8 @@ public class Produto extends Pessoa {
     }
 
     public boolean updateProdutoBD(int id, String produto,
-            int preco, String categoria, int quantidade, int quantidademax, int quantidademin) {
-        Produto objeto = new Produto(id, produto, preco,
+            int preco, String unidade, String categoria, int quantidade, int quantidademax, int quantidademin) {
+        Produto objeto = new Produto(id, produto, preco, unidade,
                 categoria, quantidade, quantidademax, quantidademin);
         dao.updateProdutoBD(objeto);
         return true;
@@ -134,7 +134,9 @@ public class Produto extends Pessoa {
         produto.setQuantidade(novaQuantidade);
 
         updateProdutoBD(produto.getId(),
-                produto.getProduto(), (int) produto.getPreco(),
+                produto.getProduto(), 
+                (int) produto.getPreco(), 
+                produto.getUnidade(),
                 produto.getCategoria(),
                 produto.getQuantidade(),
                 produto.getQuantidademax(),

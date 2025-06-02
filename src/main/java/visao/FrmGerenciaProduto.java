@@ -24,6 +24,7 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
                 a.getId(),
                 a.getProduto(),
                 a.getPreco(),
+                a.getUnidade(),
                 a.getCategoria(),
                 a.getQuantidade(),
                 a.getQuantidademax(),
@@ -42,6 +43,7 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jProgressBar1 = new javax.swing.JProgressBar();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTableProduto = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -60,21 +62,23 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
         JTFquantidademax = new javax.swing.JTextField();
         JTFquantidademin = new javax.swing.JTextField();
         JBReajuste = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        JTFunidade = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerenciamento de Alunos");
 
         JTableProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Produto", "Preço", "Categoria", "Quantidade", "Quantidade Máxima", "Quantidade Mínima"
+                "ID", "Produto", "Preço", "Unidade", "Categoria", "Quantidade", "Quantidade Máxima", "Quantidade Mínima"
             }
         ));
         JTableProduto.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -142,6 +146,8 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setText("Unidade:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -151,18 +157,6 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(JTFpreco)
-                                    .addComponent(JTFcategoria)
-                                    .addComponent(JTFquantidade)
-                                    .addComponent(JTFquantidademax)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addGap(10, 10, 10)
@@ -176,15 +170,38 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(JTFproduto, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(JTFquantidademin))))
+                                    .addComponent(JTFproduto, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7))
+                                .addGap(14, 14, 14)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(JTFpreco)
+                                    .addComponent(JTFunidade))))
                         .addGap(40, 40, 40))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(69, 69, 69)
+                                .addComponent(JTFcategoria))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(JTFquantidademin, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(JTFquantidade)
+                                    .addComponent(JTFquantidademax))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,23 +216,27 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(JTFpreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(JTFunidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(JTFcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(JTFquantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JTFquantidademax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel5)
+                    .addComponent(JTFquantidademax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(JTFquantidademin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JBCancelar)
                     .addComponent(JBAlterar)
@@ -240,6 +261,7 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
             int id = 0;
             String produto = "";
             int preco = 0;
+            String unidade = "";
             String categoria = "";
             int quantidade = 0;
             int quantidademax = 150;
@@ -253,6 +275,11 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
                 throw new Mensagem("Preço deve ser número e maior que zero.");
             } else {
                 preco = Integer.parseInt(this.JTFpreco.getText());
+            }
+            if (this.JTFunidade.getText().length() < 2) {
+                throw new Mensagem("Unidade deve contar ao menos 2 caracteres.");
+            } else {
+                unidade = this.JTFunidade.getText();
             }
             if (this.JTFcategoria.getText().length() < 2) {
                 throw new Mensagem("Categoria deve conter ao menos 2 caracteres.");
@@ -291,10 +318,11 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
                 id = Integer.parseInt(this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 0).toString());
             }
 
-            if (this.objetoproduto.updateProdutoBD(id, produto, preco, categoria, quantidade, quantidademax, quantidademin)) {
+            if (this.objetoproduto.updateProdutoBD(id, produto, preco, unidade, categoria, quantidade, quantidademax, quantidademin)) {
 
                 this.JTFproduto.setText("");
                 this.JTFpreco.setText("");
+                this.JTFunidade.setText("");
                 this.JTFcategoria.setText("");
                 this.JTFquantidade.setText("");
                 this.JTFquantidademax.setText("");
@@ -323,13 +351,15 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
         if (this.JTableProduto.getSelectedRow() != -1) {
             String produto = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 1).toString();
             String preco = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 2).toString();
-            String categoria = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 3).toString();
-            String quantidade = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 4).toString();
-            String quantidademax = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 5).toString();
-            String quantidademin = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 6).toString();
+            String unidade = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(),3).toString();
+            String categoria = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 4).toString();
+            String quantidade = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 5).toString();
+            String quantidademax = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 6).toString();
+            String quantidademin = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 7).toString();
 
             this.JTFproduto.setText(produto);
             this.JTFpreco.setText(preco);
+            this.JTFunidade.setText(unidade);
             this.JTFcategoria.setText(categoria);
             this.JTFquantidade.setText(quantidade);
             this.JTFquantidademax.setText(quantidademax);
@@ -351,6 +381,7 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
                 if (this.objetoproduto.deleteProdutoBD(id)) {
                     this.JTFproduto.setText("");
                     this.JTFpreco.setText("");
+                    this.JTFunidade.setText("");
                     this.JTFcategoria.setText("");
                     this.JTFquantidade.setText("");
                     this.JTFquantidademax.setText("");
@@ -385,7 +416,9 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
                 produto.setPreco(novoPreco);
 
                 objetoproduto.updateProdutoBD(produto.getId(),
-                        produto.getProduto(), (int) produto.getPreco(),
+                        produto.getProduto(),
+                        (int) produto.getPreco(),
+                        produto.getUnidade(),
                         produto.getCategoria(),
                         produto.getQuantidade(),
                         produto.getQuantidademax(),
@@ -452,6 +485,7 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
     private javax.swing.JTextField JTFquantidade;
     private javax.swing.JTextField JTFquantidademax;
     private javax.swing.JTextField JTFquantidademin;
+    private javax.swing.JTextField JTFunidade;
     private javax.swing.JTable JTableProduto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -459,6 +493,8 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
