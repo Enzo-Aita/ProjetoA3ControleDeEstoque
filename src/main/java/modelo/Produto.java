@@ -28,7 +28,7 @@ public class Produto extends Pessoa {
         this.quantidade = quantidade;
         this.quantidademax = quantidademax;
         this.quantidademin = quantidademin;
-        dao = new ProdutoDao();
+        this.dao = new ProdutoDao();
     }
 
     public String getCategoria() {
@@ -81,7 +81,7 @@ public class Produto extends Pessoa {
     }
 
     public boolean deleteProdutoBD(int id) {
-        int indice = this.procuraIndice(id);
+        
         dao.deleteProdutoBD(id);
         return true;
     }
@@ -94,18 +94,13 @@ public class Produto extends Pessoa {
         return true;
     }
 
-    private int procuraIndice(int id) {
-        int indice = -1;
-        for (int i = 0; i < getMinhaLista().size(); i++) {
-            if (getMinhaLista().get(i).getId() == id) {
-                indice = i;
-            }
-        }
-        return indice;
-    }
 
     public Produto carregaProduto(int id) {
         return dao.carregaProduto(id);
+    }
+    
+    public int maiorID() {
+        return dao.maiorID();   
     }
 
     public String movimentarEstoque(int id, int quantidadeMovimentada, boolean adicionar) {
@@ -171,12 +166,11 @@ public class Produto extends Pessoa {
         } catch (Exception e) {
             e.printStackTrace();
             return false;
+            
+
         }
     }
-
-    public int maiorID() {
-        return dao.maiorID();
-
-    }
-
 }
+        
+    
+
