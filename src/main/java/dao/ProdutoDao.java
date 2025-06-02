@@ -103,10 +103,11 @@ public class ProdutoDao {
             stmt.setInt(1, objeto.getId());
             stmt.setString(2, objeto.getProduto());
             stmt.setDouble(3, objeto.getPreco());
-            stmt.setString(4, objeto.getCategoria());
-            stmt.setInt(5, objeto.getQuantidade());
-            stmt.setInt(6, objeto.getQuantidademax());
-            stmt.setInt(7, objeto.getQuantidademin());
+            stmt.setString(4, objeto.getUnidade());
+            stmt.setString(5, objeto.getCategoria());
+            stmt.setInt(6, objeto.getQuantidade());
+            stmt.setInt(7, objeto.getQuantidademax());
+            stmt.setInt(8, objeto.getQuantidademin());
             
             stmt.execute();
             stmt.close();
@@ -140,9 +141,10 @@ public class ProdutoDao {
             stmt.setString(1, objeto.getProduto());
             stmt.setDouble(2, objeto.getPreco());
             stmt.setString(3, objeto.getCategoria());
-            stmt.setInt(4, objeto.getQuantidade());
-            stmt.setInt(5, objeto.getQuantidademax());
-            stmt.setInt(6, objeto.getQuantidademin());
+            stmt.setString(4, objeto.getUnidade());
+            stmt.setInt(5, objeto.getQuantidade());
+            stmt.setInt(6, objeto.getQuantidademax());
+            stmt.setInt(7, objeto.getQuantidademin());
             
             stmt.execute();
             stmt.close();
@@ -166,6 +168,7 @@ public class ProdutoDao {
             
             objeto.setProduto(res.getString("produto"));
             objeto.setPreco(res.getInt("preco"));
+            objeto.setUnidade(res.getString ("unidade"));
             objeto.setCategoria(res.getString("categoria"));
             objeto.setQuantidade(res.getInt("quantidade"));
             objeto.setQuantidademax(res.getInt("quantidademax"));
