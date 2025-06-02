@@ -8,6 +8,7 @@ CREATE TABLE tb_produtos(
 id INTEGER NOT NULL,
 produto VARCHAR(100),
 preco INTEGER,
+unidade VARCHAR(50),
 categoria VARCHAR(50),
 quantidade INTEGER,
 quantidademax INTEGER,
