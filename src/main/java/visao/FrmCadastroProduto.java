@@ -156,12 +156,12 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
     private void JBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastrarActionPerformed
         try {
             String produto = "";
-            int preco = 0;
+            double preco = 0;
             String unidade = "";
             String categoria = "";
             int quantidade = 0;
-            int quantidademax = 150;
-            int quantidademin = 25;
+            int quantidademax = 60;
+            int quantidademin = 20;
 
             if (this.JTFproduto.getText().length() < 2) {
                 throw new Mensagem("Produto deve conter ao menos 2 caracteres.");
@@ -189,34 +189,34 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
             } else {
                 quantidade = Integer.parseInt(this.JTFquantidade.getText());
             }
-            if (quantidade < 25 ) {
+            if (quantidade < 20 ) {
                 JOptionPane.showMessageDialog(null, "Quantidade menor que a mínima considere comprar mais");
             }
-            if (quantidade > 150 ) {
+            if (quantidade > 60 ) {
                 JOptionPane.showMessageDialog(null, "Quantidade maior que a máxima, não comprar mais");
             }
             
 
-            if (this.JTFquantidademax.getText().length() == 150) {
+            if (this.JTFquantidademax.getText().length() == 60) {
                 throw new Mensagem("Quantidade Máxima deve ser número");
             } else {
                 quantidademax = Integer.parseInt(this.JTFquantidademax.getText());
             }
-            if (quantidademax > 150) {
+            if (quantidademax > 60) {
                 throw new Mensagem("quantidade acima da quantidade máxima");
             }
-            if (quantidademax < 150) {
+            if (quantidademax < 60) {
                 throw new Mensagem("quantidade abaixo da quantidade máxima");
             }
-            if (this.JTFquantidademin.getText().length() == 25) {
+            if (this.JTFquantidademin.getText().length() == 20) {
                 throw new Mensagem("Quantidade Mínima deve ser número");
             } else {
                 quantidademin = Integer.parseInt(this.JTFquantidademin.getText());
             }
-            if (quantidademin > 25) {
+            if (quantidademin > 20) {
                 throw new Mensagem("quantidade acima da quantidade mínima");
             }
-            if (quantidademin < 25) {
+            if (quantidademin < 20) {
                 throw new Mensagem("quantidade abaixo da quantidade mínima");
 
             }

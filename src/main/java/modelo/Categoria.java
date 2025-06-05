@@ -4,17 +4,17 @@ package modelo;
 
 
 
-public class Pessoa {
+public class Categoria {
     private int id;
     private String produto;
-    private int preco;
+    private double preco;
     private String unidade;
 
-    public Pessoa() {
+    public Categoria() {
         this(0,"",0,"");
     }
 
-    public Pessoa(int id, String produto, int preco, String unidade) {
+    public Categoria(int id, String produto, double preco, String unidade) {
         this.id = id;
         this.produto = produto;
         this.preco = preco;
@@ -42,7 +42,7 @@ public class Pessoa {
         return preco;
     }
 
-    public void setPreco(int preco) {
+    public void setPreco(double preco) {
         this.preco = preco;
     }
     public String getUnidade() {

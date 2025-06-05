@@ -23,7 +23,6 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
             modelo.addRow(new Object[]{
                 a.getId(),
                 a.getProduto(),
-                "R$" +
                 a.getPreco(),
                 a.getUnidade(),
                 a.getCategoria(),
@@ -34,6 +33,8 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
 
         }
     }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -261,60 +262,57 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
         try {
             int id = 0;
             String produto = "";
-            int preco = 0;
+            double preco = 0;
             String unidade = "";
             String categoria = "";
             int quantidade = 0;
-            int quantidademax = 150;
-            int quantidademin = 25;
+            int quantidademax = 60;
+            int quantidademin = 20;
+
             if (this.JTFproduto.getText().length() < 2) {
                 throw new Mensagem("Produto deve conter ao menos 2 caracteres.");
             } else {
                 produto = this.JTFproduto.getText();
             }
-            if (this.JTFpreco.getText().length() <= 0) {
-                throw new Mensagem("Preço deve ser número e maior que zero.");
-            } else {
-                preco = Integer.parseInt(this.JTFpreco.getText());
+            try {
+                preco = Double.parseDouble(this.JTFpreco.getText().replace(",", "."));
+                if (preco <= 0) {
+                    throw new Mensagem("Preço deve ser maior que zero.");
+                }
+            } catch (NumberFormatException e) {
+                throw new Mensagem("Preço deve ser um número válido (ex: 10,50).");
             }
+
             if (this.JTFunidade.getText().length() < 2) {
-                throw new Mensagem("Unidade deve contar ao menos 2 caracteres.");
+                throw new Mensagem("Unidade deve conter ao menos 2 caracteres.");
             } else {
                 unidade = this.JTFunidade.getText();
             }
+
             if (this.JTFcategoria.getText().length() < 2) {
                 throw new Mensagem("Categoria deve conter ao menos 2 caracteres.");
             } else {
                 categoria = this.JTFcategoria.getText();
             }
-            if (this.JTFquantidade.getText().length() <= 0) {
-                throw new Mensagem("Quantidade deve ser número e maior que zero.");
-            } else {
-                quantidade = Integer.parseInt(this.JTFquantidade.getText());
-            }
-            if (quantidade < 25) {
-                throw new Mensagem("Quantidade do produto está abaixo da quantidade mínima");
-            }
-            if (quantidade == 25) {
-                throw new Mensagem("Quantidade mínima atingida, você deve comprar mais produtos");
-            }
-            if (quantidade > 150) {
-                throw new Mensagem("quantidade acima da quantidade Máxima");
-            }
-            if (this.JTFquantidademax.getText().length() == 150) {
-                throw new Mensagem("Quantidade Máxima deve ser número");
-            } else {
-                quantidademax = Integer.parseInt(this.JTFquantidademax.getText());
-            }
-             
-            if (this.JTFquantidademin.getText().length() == 25) {
-                throw new Mensagem("Quantidade Mínima deve ser número");
-            } else {
-                quantidademin = Integer.parseInt(this.JTFquantidademin.getText());
+
+            try {
+                quantidade = Integer.parseInt(this.JTFquantidade.getText().trim());
+                quantidademax = Integer.parseInt(this.JTFquantidademax.getText().trim());
+                quantidademin = Integer.parseInt(this.JTFquantidademin.getText().trim());
+            } catch (NumberFormatException e) {
+                throw new Mensagem("Quantidades devem ser números válidos.");
             }
 
+            if (quantidade < quantidademin) {
+                throw new Mensagem("Quantidade atual não pode ser menor que a quantidade mínima.");
+            }
+            if (quantidade > quantidademax) {
+                throw new Mensagem("Quantidade atual não pode ser maior que a quantidade máxima.");
+            }
+           
+
             if (this.JTableProduto.getSelectedRow() == -1) {
-                throw new Mensagem("Primeiro Selecione um Produto para Alterar");
+                throw new Mensagem("Primeiro selecione um produto para alterar.");
             } else {
                 id = Integer.parseInt(this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 0).toString());
             }
@@ -328,16 +326,18 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
                 this.JTFquantidade.setText("");
                 this.JTFquantidademax.setText("");
                 this.JTFquantidademin.setText("");
-                JOptionPane.showMessageDialog(rootPane, "Produto Adicionado com Sucesso!");
+
+                JOptionPane.showMessageDialog(rootPane, "Produto alterado com sucesso!");
             }
-            System.out.println(this.objetoproduto.getMinhaLista().toString());
         } catch (Mensagem erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
-        } catch (NumberFormatException erro2) {
-            JOptionPane.showMessageDialog(null, "Informe um número válido.");
+        } catch (Exception erro2) {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro: " + erro2.getMessage());
         } finally {
             carregaTabela();
         }
+
+
     }//GEN-LAST:event_JBAlterarActionPerformed
 
     private void JTFprodutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFprodutoActionPerformed
@@ -350,21 +350,30 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
 
     private void JTableProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTableProdutoMouseClicked
         if (this.JTableProduto.getSelectedRow() != -1) {
-            String produto = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 1).toString();
-            String preco = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 2).toString();
-            String unidade = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(),3).toString();
-            String categoria = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 4).toString();
-            String quantidade = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 5).toString();
-            String quantidademax = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 6).toString();
-            String quantidademin = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 7).toString();
 
-            this.JTFproduto.setText(produto);
-            this.JTFpreco.setText(preco);
-            this.JTFunidade.setText(unidade);
-            this.JTFcategoria.setText(categoria);
-            this.JTFquantidade.setText(quantidade);
-            this.JTFquantidademax.setText(quantidademax);
-            this.JTFquantidademin.setText(quantidademin);
+            try {
+
+                String produto = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 1).toString();
+                String preco = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 2).toString();
+                String unidade = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 3).toString();
+                String categoria = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 4).toString();
+                String quantidade = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 5).toString();
+                String quantidademax = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 6).toString();
+                String quantidademin = this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 7).toString();
+
+                this.JTFproduto.setText(produto);
+                this.JTFpreco.setText(preco);
+                this.JTFunidade.setText(unidade);
+                this.JTFcategoria.setText(categoria);
+                this.JTFquantidade.setText(quantidade);
+                this.JTFquantidademax.setText(quantidademax);
+                this.JTFquantidademin.setText(quantidademin);
+
+            } catch (Exception e) {
+                System.out.println("Erro ao selecionar item: " + e.getMessage());
+                JOptionPane.showMessageDialog(this, "Erro ao carregar dados do produto selecionado");
+                JOptionPane.showMessageDialog(this, "Erro ao carregar preço: " + e.getMessage());
+            }
 
         }
     }//GEN-LAST:event_JTableProdutoMouseClicked
@@ -399,42 +408,43 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_ApagarActionPerformed
 
     private void JBReajusteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBReajusteActionPerformed
-  try {
+        try {
             if (this.JTableProduto.getSelectedRow() == -1) {
                 throw new Mensagem("Primeiro selecione um produto para reajustar.");
             }
 
-            int row = this.JTableProduto.getSelectedRow();
-            int id = Integer.parseInt(this.JTableProduto.getValueAt(row, 0).toString());
+            int id = Integer.parseInt(this.JTableProduto.getValueAt(this.JTableProduto.getSelectedRow(), 0).toString());
             Produto produto = objetoproduto.carregaProduto(id);
+            int precoAtual = (int) produto.getPreco();
 
-            String input = JOptionPane.showInputDialog(this, "Digite o percentual de reajuste para o produto \"" + produto.getProduto() + "\":");
+            String input = JOptionPane.showInputDialog(this,
+                    "Digite o percentual de reajuste para " + produto.getProduto()
+                    + "\nPreço atual: R$" + precoAtual);
+
             if (input != null && !input.trim().isEmpty()) {
-                double percentual = Double.parseDouble(input.trim());
-                int precoAtual = (int) produto.getPreco();
-                int novoPreco = (int) Math.round(precoAtual * (1 + percentual / 100.0));
+                try {
+                    double percentual = Double.parseDouble(input.trim());
+                    int novoPreco = (int) Math.round(precoAtual * (1 + percentual / 100.0));
 
-                produto.setPreco(novoPreco);
-
-                objetoproduto.updateProdutoBD(produto.getId(),
-                        produto.getProduto(),
-                        (int) produto.getPreco(),
-                        produto.getUnidade(),
-                        produto.getCategoria(),
-                        produto.getQuantidade(),
-                        produto.getQuantidademax(),
-                        produto.getQuantidademin()
-                );
-
-                JOptionPane.showMessageDialog(this, "Preço do produto atualizado com sucesso!");
-                carregaTabela();
+                    if (objetoproduto.updatePrecoBD(id, novoPreco)) {
+                        JOptionPane.showMessageDialog(this,
+                                "Preço atualizado de R$" + precoAtual
+                                + " para R$" + novoPreco);
+                        carregaTabela();
+                    } else {
+                        throw new Mensagem("Falha ao atualizar o preço no banco de dados.");
+                    }
+                } catch (NumberFormatException e) {
+                    throw new Mensagem("Informe um percentual válido (ex: 10 para 10%).");
+                }
             }
-
         } catch (Mensagem e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Informe um número válido.");
-        }        // TODO add your handling code here:
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage());
+        }
+
+
     }//GEN-LAST:event_JBReajusteActionPerformed
 
     /**

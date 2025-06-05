@@ -1,27 +1,21 @@
-
-
-
-
-
 package modelo;
 
 import java.util.ArrayList;
 import dao.ProdutoDao;
 
-public class Produto extends Pessoa {
+public class Produto extends Categoria {
 
     private String categoria;
     private int quantidade;
     private int quantidademax;
     private int quantidademin;
     private ProdutoDao dao;
-    
 
     public Produto() {
-        this(0, "", 0, "","", 0, 0, 0);
+        this(0, "", 0, "", "", 0, 0, 0);
     }
 
-    public Produto(int id, String produto, int preco, String unidade,
+    public Produto(int id, String produto, double preco, String unidade,
             String categoria, int quantidade, int quantidademax, int quantidademin) {
         super(id, produto, preco, unidade);
         this.categoria = categoria;
@@ -73,7 +67,7 @@ public class Produto extends Pessoa {
         return dao.getMinhaLista();
     }
 
-    public boolean insertProdutoBD(String produto, int preco, String unidade, String categoria, int quantidade, int quantidademax, int quantidademin) {
+    public boolean insertProdutoBD(String produto, double preco, String unidade, String categoria, int quantidade, int quantidademax, int quantidademin) {
         int id = this.maiorID() + 1;
         Produto objeto = new Produto(id, produto, preco, unidade, categoria, quantidade, quantidademax, quantidademin);
         dao.insertProdutoBD(objeto);
@@ -81,77 +75,36 @@ public class Produto extends Pessoa {
     }
 
     public boolean deleteProdutoBD(int id) {
-        
+
         dao.deleteProdutoBD(id);
         return true;
     }
 
-    public boolean updateProdutoBD(int id, String produto,
-            int preco, String unidade, String categoria, int quantidade, int quantidademax, int quantidademin) {
-        Produto objeto = new Produto(id, produto, preco, unidade,
-                categoria, quantidade, quantidademax, quantidademin);
-        dao.updateProdutoBD(objeto);
-        return true;
+    public boolean updatePrecoBD(int id, int novoPreco) {
+        return dao.updatePrecoBD(id, novoPreco);
     }
 
+    public boolean updateProdutoBD(int id, String produto,
+            double preco, String unidade, String categoria,
+            int quantidade, int quantidademax, int quantidademin) {
+
+        Produto objeto = new Produto(id, produto, preco, unidade,
+                categoria, quantidade, quantidademax, quantidademin);
+
+       
+        return dao.updateProdutoBD(objeto);
+    }
+
+    public boolean updateQuantidadeBD(int id, int novaQuantidade) {
+        return dao.updateQuantidadeBD(id, novaQuantidade);
+    }
 
     public Produto carregaProduto(int id) {
         return dao.carregaProduto(id);
     }
-    
+
     public int maiorID() {
-        return dao.maiorID();   
-    }
-
-    public String movimentarEstoque(int id, int quantidadeMovimentada, boolean adicionar) {
-        Produto produto = carregaProduto(id);
-
-        if (produto == null) {
-            return "Produto não encontrado.";
-        }
-
-        int LIMITE_ENTRADA = 150;
-        int LIMITE_SAIDA = 25;
-
-        if (adicionar && quantidadeMovimentada > LIMITE_ENTRADA) {
-            return "Erro: A quantidade adicionada não pode ultrapassar " + LIMITE_ENTRADA + " unidades.";
-        }
-
-        if (!adicionar && quantidadeMovimentada > LIMITE_SAIDA) {
-            return "Erro: A quantidade subtraida não pode ultrapassar " + LIMITE_SAIDA + " unidades.";
-        }
-
-        int novaQuantidade;
-        if (adicionar) {
-            novaQuantidade = produto.getQuantidade() + quantidadeMovimentada;
-        } else {
-            novaQuantidade = produto.getQuantidade() - quantidadeMovimentada;
-            if (novaQuantidade < 0) {
-                return "Erro: Estoque insuficiente para essa saída.";
-            }
-        }
-
-        produto.setQuantidade(novaQuantidade);
-
-        updateProdutoBD(produto.getId(),
-                produto.getProduto(), 
-                (int) produto.getPreco(), 
-                produto.getUnidade(),
-                produto.getCategoria(),
-                produto.getQuantidade(),
-                produto.getQuantidademax(),
-                produto.getQuantidademin()
-        );
-
-        if (!adicionar && novaQuantidade < produto.getQuantidademin()) {
-            return "Produto subtraído.. Atenção: Estoque abaixo da quantidade mínima. Providencie nova compra.";
-        }
-
-        if (adicionar && novaQuantidade > produto.getQuantidademax()) {
-            return "Produto adicionado. Atenção: Estoque acima da quantidade máxima. Não compre mais deste produto.";
-        }
-
-        return adicionar ? "Produto adicionado com sucesso." : "Produto subtraído com sucesso.";
+        return dao.maiorID();
     }
 
     public boolean reajustarPrecos(double percentual) {
@@ -168,11 +121,7 @@ public class Produto extends Pessoa {
         } catch (Exception e) {
             e.printStackTrace();
             return false;
-            
 
         }
     }
 }
-        
-    
-

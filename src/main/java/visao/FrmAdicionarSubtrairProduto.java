@@ -7,16 +7,20 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Produto;
+import modelo.MovimentaEstoque;
 
 
 
 public class FrmAdicionarSubtrairProduto extends javax.swing.JFrame {
 
+    private MovimentaEstoque movimentaEstoque;
     private Produto objetoproduto;
 
     public FrmAdicionarSubtrairProduto() {
         initComponents();
+        
         this.objetoproduto = new Produto();
+        this.movimentaEstoque = new MovimentaEstoque();
         this.carregaTabela();
         
     }
@@ -142,7 +146,7 @@ public class FrmAdicionarSubtrairProduto extends javax.swing.JFrame {
             
             if (textoAdicionar != null && !textoAdicionar.isEmpty()) {
                 int quantidadeAdicionar = Integer.parseInt(textoAdicionar);
-                String mensagemResultado = objetoproduto.movimentarEstoque(id, quantidadeAdicionar, true);
+                String mensagemResultado = movimentaEstoque.movimentarEstoque(id, quantidadeAdicionar, true);
                 
                 JOptionPane.showMessageDialog(this, mensagemResultado);
                 carregaTabela();
@@ -168,7 +172,7 @@ public class FrmAdicionarSubtrairProduto extends javax.swing.JFrame {
             String subtrairUsuario = JOptionPane.showInputDialog("Informe a quantidade de saída:");
             if(subtrairUsuario != null && !subtrairUsuario.isEmpty()) {
                 int quantidade = Integer.parseInt(subtrairUsuario);
-                String mensagemRetorno = objetoproduto.movimentarEstoque(idProduto, quantidade, false);
+                String mensagemRetorno = movimentaEstoque.movimentarEstoque(idProduto, quantidade, false);
                 JOptionPane.showMessageDialog(this, mensagemRetorno);
                 carregaTabela();
             }
