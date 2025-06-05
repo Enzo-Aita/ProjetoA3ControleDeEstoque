@@ -1,5 +1,5 @@
 
-package visao;
+package visao.frmproduto;
 
 
 
@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Produto;
 import modelo.MovimentaEstoque;
+import visao.Mensagem;
 
 
 

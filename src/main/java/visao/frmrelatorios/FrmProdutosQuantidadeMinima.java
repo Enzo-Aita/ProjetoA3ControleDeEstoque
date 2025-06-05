@@ -1,5 +1,5 @@
 
-package visao;
+package visao.frmrelatorios;
 
 import modelo.Produto;
 import java.util.ArrayList;

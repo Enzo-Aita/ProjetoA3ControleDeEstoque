@@ -1,40 +1,45 @@
-package visao;
+package visao.frmrelatorios;
 
-import java.util.Map;
-import modelo.Produto;
 import java.util.ArrayList;
+import java.util.Comparator;
 import javax.swing.table.DefaultTableModel;
-import java.util.HashMap;
+import modelo.Produto;
 
-public class FrmProdutosCategoria extends javax.swing.JFrame {
+
+public class FrmBalancoFinanceiro extends javax.swing.JFrame {
     private Produto objetoproduto;
 
     
-    public FrmProdutosCategoria() {
+    public FrmBalancoFinanceiro() {
         initComponents();
         
         this.objetoproduto = new Produto();
         this.carregartabela();
     }
+    
     public void carregartabela() {
-        DefaultTableModel modelo = (DefaultTableModel) this.JTableProdutoCategoria.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) this.JTableBalancoFisico.getModel();
         modelo.setNumRows(0);
         
         ArrayList<Produto> lista = objetoproduto.getMinhaLista();
-        Map<String,Integer> categorias = new HashMap<>();
-        
-        for (Produto a : lista) {
-            String categoria = a.getCategoria();
-            categorias.put(categoria, categorias.getOrDefault(categoria, 0) + 1);
-        }
-        
-        for(Map.Entry<String, Integer> entry : categorias.entrySet()) {
-            modelo.addRow(new Object[] {
-                
-                entry.getKey(),
-                entry.getValue()
+         lista.sort(Comparator.comparing(Produto::getProduto));
+         
+         double totalGeral = 0;
+
+        for(Produto a : lista) {
+            double totalProduto = a.getPreco() * a.getQuantidade();
+            totalGeral += totalProduto;
+
+            modelo.addRow(new Object[]{
+                    a.getProduto(),
+                    a.getQuantidade(),
+                    "R$" +
+                    a.getPreco(),
+                    String.format("R$ %.2f", totalProduto)
             });
         }
+
+        modelo.addRow(new Object[]{"", "", "TOTAL GERAL", String.format("R$ %.2f", totalGeral)});
     }
 
     /**
@@ -47,26 +52,28 @@ public class FrmProdutosCategoria extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        JTableProdutoCategoria = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        JTableBalancoFisico = new javax.swing.JTable();
+        JBCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        JTableProdutoCategoria.setModel(new javax.swing.table.DefaultTableModel(
+        JTableBalancoFisico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Categoria", "Quantidade de Produtos"
+                "Produto", "Quantidade", "Preço", "Total Produto"
             }
         ));
-        jScrollPane1.setViewportView(JTableProdutoCategoria);
+        jScrollPane1.setViewportView(JTableBalancoFisico);
 
-        jButton1.setText("Cancelar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        JBCancelar.setText("Cancelar");
+        JBCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                JBCancelarActionPerformed(evt);
             }
         });
 
@@ -76,25 +83,25 @@ public class FrmProdutosCategoria extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(152, 152, 152)
-                .addComponent(jButton1)
+                .addGap(134, 134, 134)
+                .addComponent(JBCancelar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(21, 21, 21))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                .addComponent(JBCancelar)
+                .addGap(29, 29, 29))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void JBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_JBCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -113,27 +120,30 @@ public class FrmProdutosCategoria extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmProdutosCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmBalancoFinanceiro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmProdutosCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmBalancoFinanceiro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmProdutosCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmBalancoFinanceiro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmProdutosCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmBalancoFinanceiro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmProdutosCategoria().setVisible(true);
+                new FrmBalancoFinanceiro().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable JTableProdutoCategoria;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton JBCancelar;
+    private javax.swing.JTable JTableBalancoFisico;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

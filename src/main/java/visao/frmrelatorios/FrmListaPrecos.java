@@ -1,4 +1,4 @@
-package visao;
+package visao.frmrelatorios;
 
 import java.util.ArrayList;
 import java.util.Comparator;

@@ -1,6 +1,15 @@
 
 package visao;
 
+import visao.frmcategoria.FrmProdutosCategoria;
+import visao.frmrelatorios.FrmBalancoFinanceiro;
+import visao.frmrelatorios.FrmListaPrecos;
+import visao.frmproduto.FrmCadastroProduto;
+import visao.frmproduto.FrmAdicionarSubtrairProduto;
+import visao.frmproduto.FrmGerenciaProduto;
+import visao.frmrelatorios.FrmProdutosQuantidadeMaxima;
+import visao.frmrelatorios.FrmProdutosQuantidadeMinima;
+
 
 public class FrmMenuPrincipal extends javax.swing.JFrame {
 
@@ -19,12 +28,11 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        JBSair = new javax.swing.JButton();
+        JBCadastrarProduto = new javax.swing.JButton();
+        JBGerenciarProduto = new javax.swing.JButton();
+        JBEntradaSaida = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenuArquivo = new javax.swing.JMenu();
-        jMenuCadastrarAluno = new javax.swing.JMenuItem();
-        jMenuGerenciarAluno = new javax.swing.JMenuItem();
-        jMenuAdicionarSubtrairProduto = new javax.swing.JMenuItem();
-        jMenuSair = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         JMenuListaPrecos = new javax.swing.JMenuItem();
         JMenuBalancoFisico = new javax.swing.JMenuItem();
@@ -38,41 +46,33 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Stencil", 0, 48)); // NOI18N
         jLabel1.setText("CONTROLE DE ESTOQUE");
 
-        jMenuArquivo.setText("Arquivo");
-
-        jMenuCadastrarAluno.setText("CadastrarProduto");
-        jMenuCadastrarAluno.addActionListener(new java.awt.event.ActionListener() {
+        JBSair.setText("Sair");
+        JBSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuCadastrarAlunoActionPerformed(evt);
+                JBSairActionPerformed(evt);
             }
         });
-        jMenuArquivo.add(jMenuCadastrarAluno);
 
-        jMenuGerenciarAluno.setText("GerenciarProduto");
-        jMenuGerenciarAluno.addActionListener(new java.awt.event.ActionListener() {
+        JBCadastrarProduto.setText("Cadastrar Produto");
+        JBCadastrarProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuGerenciarAlunoActionPerformed(evt);
+                JBCadastrarProdutoActionPerformed(evt);
             }
         });
-        jMenuArquivo.add(jMenuGerenciarAluno);
 
-        jMenuAdicionarSubtrairProduto.setText("AdicionarSubtrairProduto");
-        jMenuAdicionarSubtrairProduto.addActionListener(new java.awt.event.ActionListener() {
+        JBGerenciarProduto.setText("Gerenciar Produto");
+        JBGerenciarProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuAdicionarSubtrairProdutoActionPerformed(evt);
+                JBGerenciarProdutoActionPerformed(evt);
             }
         });
-        jMenuArquivo.add(jMenuAdicionarSubtrairProduto);
 
-        jMenuSair.setText("Sair");
-        jMenuSair.addActionListener(new java.awt.event.ActionListener() {
+        JBEntradaSaida.setText("Entrada e Saída");
+        JBEntradaSaida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuSairActionPerformed(evt);
+                JBEntradaSaidaActionPerformed(evt);
             }
         });
-        jMenuArquivo.add(jMenuSair);
-
-        jMenuBar1.add(jMenuArquivo);
 
         jMenu1.setText("Relatórios");
 
@@ -126,38 +126,41 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(20, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(JBCadastrarProduto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(JBGerenciarProduto))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(203, 203, 203)
+                                .addComponent(JBSair, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(JBEntradaSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(198, Short.MAX_VALUE))
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JBCadastrarProduto)
+                    .addComponent(JBGerenciarProduto)
+                    .addComponent(JBEntradaSaida))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(JBSair)
+                .addGap(62, 62, 62))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSairActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jMenuSairActionPerformed
-
-    private void jMenuGerenciarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuGerenciarAlunoActionPerformed
-        FrmGerenciaProduto objeto = new FrmGerenciaProduto();
-        objeto.setVisible(true);
-    }//GEN-LAST:event_jMenuGerenciarAlunoActionPerformed
-
-    private void jMenuCadastrarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCadastrarAlunoActionPerformed
-        FrmCadastroProduto objeto = new FrmCadastroProduto();
-        objeto.setVisible(true);
-    }//GEN-LAST:event_jMenuCadastrarAlunoActionPerformed
-
-    private void jMenuAdicionarSubtrairProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAdicionarSubtrairProdutoActionPerformed
-        FrmAdicionarSubtrairProduto objeto = new FrmAdicionarSubtrairProduto();
-        objeto.setVisible(true);
-    }//GEN-LAST:event_jMenuAdicionarSubtrairProdutoActionPerformed
 
     private void JMenuProdutosMinimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuProdutosMinimosActionPerformed
 FrmProdutosQuantidadeMinima objeto = new FrmProdutosQuantidadeMinima();
@@ -184,6 +187,25 @@ objeto.setVisible(true); // TODO add your handling code here:
         objeto.setVisible(true);
     }//GEN-LAST:event_JMenuBalancoFisicoActionPerformed
 
+    private void JBSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBSairActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_JBSairActionPerformed
+
+    private void JBCadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastrarProdutoActionPerformed
+        FrmCadastroProduto objeto = new FrmCadastroProduto();
+        objeto.setVisible(true);
+    }//GEN-LAST:event_JBCadastrarProdutoActionPerformed
+
+    private void JBGerenciarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBGerenciarProdutoActionPerformed
+        FrmGerenciaProduto objeto = new FrmGerenciaProduto();
+        objeto.setVisible(true);
+    }//GEN-LAST:event_JBGerenciarProdutoActionPerformed
+
+    private void JBEntradaSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBEntradaSaidaActionPerformed
+        FrmAdicionarSubtrairProduto objeto = new FrmAdicionarSubtrairProduto();
+        objeto.setVisible(true);
+    }//GEN-LAST:event_JBEntradaSaidaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -195,7 +217,7 @@ objeto.setVisible(true); // TODO add your handling code here:
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -221,6 +243,10 @@ objeto.setVisible(true); // TODO add your handling code here:
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JBCadastrarProduto;
+    private javax.swing.JButton JBEntradaSaida;
+    private javax.swing.JButton JBGerenciarProduto;
+    private javax.swing.JButton JBSair;
     private javax.swing.JMenuItem JMenuBalancoFisico;
     private javax.swing.JMenuItem JMenuListaPrecos;
     private javax.swing.JMenuItem JMenuProdutoCategoria;
@@ -228,11 +254,6 @@ objeto.setVisible(true); // TODO add your handling code here:
     private javax.swing.JMenuItem JMenuProdutosMinimos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuItem jMenuAdicionarSubtrairProduto;
-    private javax.swing.JMenu jMenuArquivo;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuCadastrarAluno;
-    private javax.swing.JMenuItem jMenuGerenciarAluno;
-    private javax.swing.JMenuItem jMenuSair;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,7 +4,7 @@ package modelo;
 import dao.ProdutoDao;
 import java.util.ArrayList;
 
-public class MovimentaEstoque {
+public class MovimentaEstoque{
     
     private ProdutoDao dao = new ProdutoDao();
     
