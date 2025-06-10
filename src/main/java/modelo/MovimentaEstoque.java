@@ -1,63 +1,113 @@
-
 package modelo;
 
 import dao.ProdutoDao;
-import java.util.ArrayList;
+import dao.MovimentaDao;
+import java.util.List;
+import java.util.Map;
 
-public class MovimentaEstoque{
+public class MovimentaEstoque {
     
-    private ProdutoDao dao = new ProdutoDao();
+    private final ProdutoDao produtoDao;
+    private final MovimentaDao movimentaDao;
     
     
-     public String movimentarEstoque(int id, int quantidadeMovimentada, boolean adicionar) {
-        Produto produto = dao.carregaProduto(id);
-
-        if (produto == null) {
-            return "Produto não encontrado.";
-        }
-
-        int LIMITE_ENTRADA = 150;
-        int LIMITE_SAIDA = 25;
-
-        if (adicionar && quantidadeMovimentada > LIMITE_ENTRADA) {
-            return "Erro: A quantidade adicionada não pode ultrapassar " + LIMITE_ENTRADA + " unidades.";
-        }
-
-        if (!adicionar && quantidadeMovimentada > LIMITE_SAIDA) {
-            return "Erro: A quantidade subtraída não pode ultrapassar " + LIMITE_SAIDA + " unidades.";
-        }
-
-        int novaQuantidade;
-        if (adicionar) {
-            novaQuantidade = produto.getQuantidade() + quantidadeMovimentada;
-        } else {
-            novaQuantidade = produto.getQuantidade() - quantidadeMovimentada;
-            if (novaQuantidade < 0) {
-                return "Erro: Estoque insuficiente para essa saída.";
-            }
+    private int limiteEntrada = 150;
+    private int limiteSaida = 25;
+    
+    public MovimentaEstoque() {
+        this.produtoDao = new ProdutoDao();
+        this.movimentaDao = new MovimentaDao();
+    }
+    
+    
+    public MovimentaEstoque(int limiteEntrada, int limiteSaida) {
+        this();
+        this.limiteEntrada = limiteEntrada;
+        this.limiteSaida = limiteSaida;
+    }
+    
+   
+    public String movimentarEstoque(int id, int quantidade, boolean adicionar, String observacao) {
+       
+        if (quantidade <= 0) {
+            return "Erro: Quantidade deve ser maior que zero.";
         }
         
-        boolean atualizado = produto.updateQuantidadeBD(id, novaQuantidade);
-
+        Produto produto = produtoDao.carregaProduto(id);
+        if (produto == null) {
+            return "Erro: Produto não encontrado.";
+        }
+        
+       
+        if (adicionar && quantidade > limiteEntrada) {
+            return String.format("Erro: Quantidade de entrada excede o limite de %d unidades.", limiteEntrada);
+        }
+        
+        if (!adicionar && quantidade > limiteSaida) {
+            return String.format("Erro: Quantidade de saída excede o limite de %d unidades.", limiteSaida);
+        }
+        
+       
+        int novaQuantidade = adicionar ? 
+                produto.getQuantidade() + quantidade : 
+                produto.getQuantidade() - quantidade;
+        
+        if (novaQuantidade < 0) {
+            return "Erro: Estoque insuficiente para esta saída.";
+        }
+        
+       
+        boolean estoqueAtualizado = produtoDao.updateQuantidadeBD(id, novaQuantidade);
+        if (!estoqueAtualizado) {
+            return "Erro: Falha ao atualizar estoque do produto.";
+        }
+        
+       
+        String tipo = adicionar ? "ENTRADA" : "SAÍDA";
+        boolean movimentacaoRegistrada = movimentaDao.registrarMovimentacao(
+                id, quantidade, tipo, observacao);
+        
+        if (!movimentacaoRegistrada) {
+            return "Operação concluída com aviso: Estoque atualizado, mas histórico não registrado.";
+        }
+        
+       
         produto.setQuantidade(novaQuantidade);
-
-        dao.updateProdutoBD(produto);
-
+        
         if (!adicionar && novaQuantidade < produto.getQuantidademin()) {
-            return "Produto subtraído.. Atenção: Estoque abaixo da quantidade mínima. Providencie nova compra.";
+            return "Operação concluída. ATENÇÃO: Estoque abaixo do mínimo (" + produto.getQuantidademin() + " unidades).";
         }
-
+        
         if (adicionar && novaQuantidade > produto.getQuantidademax()) {
-            return "Produto adicionado. Atenção: Estoque acima da quantidade máxima. Não compre mais deste produto.";
+            return "Operação concluída. ATENÇÃO: Estoque acima do máximo (" + produto.getQuantidademax() + " unidades).";
         }
-
-        return adicionar ? "Produto adicionado com sucesso." : "Produto subtraído com sucesso.";
+        
+        return "Movimentação registrada com sucesso.";
     }
-     
-     
-     
-     
-     
-
-   
+    
+    
+    public List<Map<String, Object>> getHistoricoPorProduto(int idProduto) {
+        return movimentaDao.getHistoricoPorProduto(idProduto);
+    }
+    
+    
+    public List<Map<String, Object>> getTodasMovimentacoes() {
+        return movimentaDao.getTodasMovimentacoes();
+    }
+    
+    public int getLimiteEntrada() {
+        return limiteEntrada;
+    }
+    
+    public int getLimiteSaida() {
+        return limiteSaida;
+    }
+    
+    public void setLimiteEntrada(int limiteEntrada) {
+        this.limiteEntrada = limiteEntrada;
+    }
+    
+    public void setLimiteSaida(int limiteSaida) {
+        this.limiteSaida = limiteSaida;
+    }
 }

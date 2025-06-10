@@ -7,7 +7,7 @@ import visao.frmrelatorios.FrmProdutosCategoria;
 import visao.frmrelatorios.FrmBalancoFinanceiro;
 import visao.frmrelatorios.FrmListaPrecos;
 import visao.frmproduto.FrmCadastroProduto;
-import visao.frmproduto.FrmEntradaSaidaProduto;
+import visao.frmproduto.FrmMovimentaProduto;
 import visao.frmproduto.FrmGerenciaProduto;
 import visao.frmrelatorios.FrmProdutosQuantidadeMaxima;
 import visao.frmrelatorios.FrmProdutosQuantidadeMinima;
@@ -226,7 +226,7 @@ objeto.setVisible(true); // TODO add your handling code here:
     }//GEN-LAST:event_JBGerenciarProdutoActionPerformed
 
     private void JBEntradaSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBEntradaSaidaActionPerformed
-        FrmEntradaSaidaProduto objeto = new FrmEntradaSaidaProduto();
+        FrmMovimentaProduto objeto = new FrmMovimentaProduto();
         objeto.setVisible(true);
     }//GEN-LAST:event_JBEntradaSaidaActionPerformed
 
