@@ -82,7 +82,7 @@ private Categoria objetocategoria;
 
         JCBTamanhoGerencia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pequeno", "Medio", "Grande" }));
 
-        JBAlternar.setText("Alternar");
+        JBAlternar.setText("Alterar");
         JBAlternar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBAlternarActionPerformed(evt);
