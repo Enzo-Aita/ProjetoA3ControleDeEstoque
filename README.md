@@ -1,6 +1,6 @@
 ## Controle de Estoque !
 
-| Nome                                  | RA          | GI Nome  
+| Nome                                  | RA          | GIH Nome  
 | ------------------------------------- | ----------- | ---------------------- |
 | Andreas Honorato Moreno Schoenawa     | 10725114852 | Andre, andreashonorato |
 | Enzo Aita Naime                       | 10725113352 | Enzo-Aita              |
