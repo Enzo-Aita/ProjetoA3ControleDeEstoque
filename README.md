@@ -1,5 +1,4 @@
 # ProjetoA3
-
 Nomes e RA:
 
 Enzo Aita Naime/10725113352/Enzo-Aita,
@@ -21,7 +20,7 @@ Giovanna Bosquerolli/10725110130/camil.
 | Git 2.49.0                       | 
 
 
-## Requisitos não funcionais 
+## X Requisitos não funcionais 
 ➞ RNF001 – O sistema deve empregar o padrão de projeto DAO , garantindo a separação entre o acesso aos dados, a regra de negócio e a camada de apresentação.
 
 ➞ RNF002 – A persistência das informações deve ser assegurada através de um banco de dados relacional MySQL
@@ -33,3 +32,5 @@ Giovanna Bosquerolli/10725110130/camil.
 ➞ RNF005 – O código-fonte do sistema deve seguir uma estrutura modular, com boas práticas de organização, legibilidade e documentação adequada nas classes e métodos.
 
 ➞ RNF006 – A arquitetura do sistema deve permitir fácil adaptação para futuros crescimentos, como adição de novos módulos ou aumento no volume de dados.
+
+##  ✓ Requisitos Funcionais 
