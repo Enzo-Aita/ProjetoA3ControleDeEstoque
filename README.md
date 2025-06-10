@@ -22,7 +22,7 @@ Giovanna Bosquerolli/10725110130/camil.
 
 
 ## Requisitos não funcionais 
-➞ RNF001 – O sistema deve empregar o padrão de projeto DAO (Data Access Object), garantindo a separação entre o acesso aos dados, a regra de negócio e a camada de apresentação.
+➞ RNF001 – O sistema deve empregar o padrão de projeto DAO , garantindo a separação entre o acesso aos dados, a regra de negócio e a camada de apresentação.
 
 ➞ RNF002 – A persistência das informações deve ser assegurada através de um banco de dados relacional MySQL
 
