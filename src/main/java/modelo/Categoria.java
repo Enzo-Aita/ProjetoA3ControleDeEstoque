@@ -1,25 +1,31 @@
-
 package modelo;
 
-
-
+import dao.CategoriaDao;
+import java.util.ArrayList;
 
 public class Categoria {
+
     private int id;
-    private String produto;
-    private double preco;
-    private String unidade;
+    private String nome;
+    private String embalagem;
+    private String tamanho;
+    private CategoriaDao dao;
 
     public Categoria() {
-        this(0,"",0,"");
+        this(0, "", "", "");
     }
 
-    public Categoria(int id, String produto, double preco, String unidade) {
+    public Categoria(int id, String nome, String embalagem, String tamanho) {
         this.id = id;
-        this.produto = produto;
-        this.preco = preco;
-        this.unidade = unidade;
-       
+        this.nome = nome;
+        this.embalagem = embalagem;
+        this.tamanho = tamanho;
+        this.dao = new CategoriaDao();
+    }
+
+    public Categoria(int idCategoria, String nomeCategoria){
+        this.id = idCategoria;
+        this.nome = nomeCategoria;
     }
 
     public int getId() {
@@ -30,32 +36,66 @@ public class Categoria {
         this.id = id;
     }
 
-    public String getProduto() {
-        return produto;
+    public String getNome() {
+        return nome;
     }
 
-    public void setProduto(String produto) {
-        this.produto = produto;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public double getPreco() {
-        return preco;
+    public String getEmbalagem() {
+        return embalagem;
     }
 
-    public void setPreco(double preco) {
-        this.preco = preco;
+    public void setEmbalagem(String embalagem) {
+        this.embalagem = embalagem;
     }
-    public String getUnidade() {
-        return unidade;
+
+    public String getTamanho() {
+        return tamanho;
     }
-    public void setUnidade(String unidade) {
-        this.unidade = unidade;
+
+    public void setTamanho(String tamanho) {
+        this.tamanho = tamanho;
+    }
+
+    public CategoriaDao getDao() {
+        return dao;
+    }
+
+    public void setDao(CategoriaDao dao) {
+        this.dao = dao;
+    }
+
+
+
+    public ArrayList<Categoria> getMinhaLista() {
+        return dao.getMinhaLista();
+    }
+
+    public boolean insertCategoriaBD(String nome, String embalagem, String tamanho) {
+        int id = this.maiorID() + 1;
+        Categoria objeto = new Categoria(id, nome, embalagem, tamanho);
+        dao.insertCategoriaBD(objeto);
+        return true;
+    }
+
+    public boolean deleteCategoriaBD(int id) {
+        dao.deleteCategoriaBD(id);
+        return true;
     }
     
+public boolean updateCategoriaBD(int id, String nome, String embalagem, String tamanho) {
+        Categoria objeto = new Categoria(id, nome, embalagem, tamanho);
+        return dao.updateCategoriaBD(objeto);
+    }
 
-   
-    @Override
-    public String toString(){
-        return "id=" + id +", produto=" + produto + ",preco=" + preco + ",unidade=" + unidade;
+    public Categoria carregaCategoria(int id) {
+        return dao.carregaCategoria(id);
+    }
+
+    public int maiorID() {
+        return dao.maiorID();
     }
 }

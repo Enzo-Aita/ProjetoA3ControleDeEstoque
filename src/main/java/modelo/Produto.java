@@ -3,13 +3,18 @@ package modelo;
 import java.util.ArrayList;
 import dao.ProdutoDao;
 
-public class Produto extends Categoria {
-
+public class Produto {
+    
+    private int id;
+    private double preco;
+    private String unidade;
     private String categoria;
+    private String produto;
     private int quantidade;
     private int quantidademax;
     private int quantidademin;
     private ProdutoDao dao;
+    
 
     public Produto() {
         this(0, "", 0, "", "", 0, 0, 0);
@@ -17,12 +22,39 @@ public class Produto extends Categoria {
 
     public Produto(int id, String produto, double preco, String unidade,
             String categoria, int quantidade, int quantidademax, int quantidademin) {
-        super(id, produto, preco, unidade);
+        this.id = id;
+        this.preco = preco;
+        this.unidade = unidade;
         this.categoria = categoria;
+        this.produto = produto;
         this.quantidade = quantidade;
         this.quantidademax = quantidademax;
         this.quantidademin = quantidademin;
         this.dao = new ProdutoDao();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
+    public String getUnidade() {
+        return unidade;
+    }
+
+    public void setUnidade(String unidade) {
+        this.unidade = unidade;
     }
 
     public String getCategoria() {
@@ -33,13 +65,20 @@ public class Produto extends Categoria {
         this.categoria = categoria;
     }
 
+    public String getProduto() {
+        return produto;
+    }
+
+    public void setProduto(String produto) {
+        this.produto = produto;
+    }
+
     public int getQuantidade() {
         return quantidade;
     }
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
-
     }
 
     public int getQuantidademax() {
@@ -58,10 +97,15 @@ public class Produto extends Categoria {
         this.quantidademin = quantidademin;
     }
 
-    @Override
-    public String toString() {
-        return super.toString() + "categoria=" + categoria + ",quantidade=" + quantidade + ",quantidademax=" + quantidademax + ",quantidademin=" + quantidademin;
+    public ProdutoDao getDao() {
+        return dao;
     }
+
+    public void setDao(ProdutoDao dao) {
+        this.dao = dao;
+    }
+    
+    
 
     public ArrayList<Produto> getMinhaLista() {
         return dao.getMinhaLista();
