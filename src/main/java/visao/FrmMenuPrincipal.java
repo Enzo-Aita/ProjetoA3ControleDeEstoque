@@ -1,6 +1,8 @@
 
 package visao;
 
+import visao.frmcategoria.FrmCadastroCategoria;
+import visao.frmcategoria.FrmGerenciaCategoria;
 import visao.frmrelatorios.FrmProdutosCategoria;
 import visao.frmrelatorios.FrmBalancoFinanceiro;
 import visao.frmrelatorios.FrmListaPrecos;
@@ -77,8 +79,18 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         });
 
         JBGerenciaCategoria.setText("Gerencia Categoria");
+        JBGerenciaCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBGerenciaCategoriaActionPerformed(evt);
+            }
+        });
 
         JBCadastrarCategoria.setText("Cadastrar Categoria");
+        JBCadastrarCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBCadastrarCategoriaActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Relatórios");
 
@@ -220,6 +232,16 @@ objeto.setVisible(true); // TODO add your handling code here:
         FrmAdicionarSubtrairProduto objeto = new FrmAdicionarSubtrairProduto();
         objeto.setVisible(true);
     }//GEN-LAST:event_JBEntradaSaidaActionPerformed
+
+    private void JBGerenciaCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBGerenciaCategoriaActionPerformed
+    FrmGerenciaCategoria objeto = new  FrmGerenciaCategoria();
+    objeto.setVisible(true);
+    }//GEN-LAST:event_JBGerenciaCategoriaActionPerformed
+
+    private void JBCadastrarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastrarCategoriaActionPerformed
+FrmCadastroCategoria objeto =   new FrmCadastroCategoria();
+objeto.setVisible(true);
+    }//GEN-LAST:event_JBCadastrarCategoriaActionPerformed
 
     /**
      * @param args the command line arguments

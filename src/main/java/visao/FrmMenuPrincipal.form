@@ -181,11 +181,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Gerencia Categoria"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBGerenciaCategoriaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="JBCadastrarCategoria">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cadastrar Categoria"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBCadastrarCategoriaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

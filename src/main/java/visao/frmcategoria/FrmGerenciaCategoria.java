@@ -1,20 +1,33 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package visao.frmcategoria;
 
-/**
- *
- * @author camil
- */
-public class FrmGerenciaCategoria extends javax.swing.JFrame {
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelo.Categoria;
+import visao.Mensagem;
 
-    /**
-     * Creates new form FrmGerenciaCategoria
-     */
+
+public class FrmGerenciaCategoria extends javax.swing.JFrame {
+private Categoria objetocategoria;
+
     public FrmGerenciaCategoria() {
         initComponents();
+        this.objetocategoria = new Categoria();
+        this.carregaTabela();
+    }
+    public void carregaTabela() {
+        DefaultTableModel modelo = (DefaultTableModel) this.JTableGerenciaCategoria.getModel();
+        modelo.setNumRows(0);
+        ArrayList<Categoria> minhaLista = objetocategoria.getMinhaLista();
+        for (Categoria c : minhaLista) {
+            modelo.addRow(new Object[]{
+                c.getId(),
+                c.getNome(),
+                c.getEmbalagem(),
+                c.getTamanho()
+            });
+        }
     }
 
     /**
@@ -26,21 +39,216 @@ public class FrmGerenciaCategoria extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        JTableGerenciaCategoria = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        JTFNomeGerencia = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        JCBEmbalagemGerencia = new javax.swing.JComboBox<>();
+        JCBTamanhoGerencia = new javax.swing.JComboBox<>();
+        JBAlternar = new javax.swing.JButton();
+        JBCancelar = new javax.swing.JButton();
+        JBApagar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        JTableGerenciaCategoria.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nome", "Embalagem", "Tamanho"
+            }
+        ));
+        JTableGerenciaCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JTableGerenciaCategoriaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(JTableGerenciaCategoria);
+
+        jLabel1.setText("Nome:");
+
+        jLabel2.setText("Embalagem:");
+
+        jLabel3.setText("Tamanho:");
+
+        JCBEmbalagemGerencia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plastico", "Lata", "Vidro" }));
+
+        JCBTamanhoGerencia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pequeno", "Medio", "Grande" }));
+
+        JBAlternar.setText("Alternar");
+        JBAlternar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBAlternarActionPerformed(evt);
+            }
+        });
+
+        JBCancelar.setText("Cancelar");
+        JBCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBCancelarActionPerformed(evt);
+            }
+        });
+
+        JBApagar.setText("Apagar");
+        JBApagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBApagarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(JTFNomeGerencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(JCBEmbalagemGerencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JCBTamanhoGerencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(JBApagar)
+                .addGap(37, 37, 37)
+                .addComponent(JBAlternar)
+                .addGap(54, 54, 54)
+                .addComponent(JBCancelar)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(137, 137, 137)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(JTFNomeGerencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(JCBEmbalagemGerencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(JCBTamanhoGerencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JBAlternar)
+                    .addComponent(JBCancelar)
+                    .addComponent(JBApagar))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void JTableGerenciaCategoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTableGerenciaCategoriaMouseClicked
+if (this.JTableGerenciaCategoria.getSelectedRow() != -1) {
+            try {
+                String nome = this.JTableGerenciaCategoria.getValueAt(this.JTableGerenciaCategoria.getSelectedRow(), 1).toString();
+                String embalagem = this.JTableGerenciaCategoria.getValueAt(this.JTableGerenciaCategoria.getSelectedRow(), 2).toString();
+                String tamanho = this.JTableGerenciaCategoria.getValueAt(this.JTableGerenciaCategoria.getSelectedRow(), 3).toString();
+
+                this.JTFNomeGerencia.setText(nome);
+                this.JCBEmbalagemGerencia.setSelectedItem(embalagem);
+                this.JCBTamanhoGerencia.setSelectedItem(tamanho);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Erro ao carregar dados da categoria selecionada");
+            }
+        }
+        
+    }//GEN-LAST:event_JTableGerenciaCategoriaMouseClicked
+
+    private void JBAlternarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAlternarActionPerformed
+   try{
+        int id = 0;
+            String nome = "";
+            String embalagem = "";
+            String tamanho = "";
+
+            if (this.JTFNomeGerencia.getText().length() < 2) {
+                throw new Mensagem("Nome deve conter ao menos 2 caracteres.");
+            } else {
+                nome = this.JTFNomeGerencia.getText();
+            }
+            if (this.JCBEmbalagemGerencia.getSelectedIndex() <= 0) {
+                throw new Mensagem("Selecione um tipo de embalagem válido.");
+            } else {
+                embalagem = this.JCBEmbalagemGerencia.getSelectedItem().toString();
+            }
+
+            if (this.JCBTamanhoGerencia.getSelectedIndex() <= 0) {
+                throw new Mensagem("Selecione um tamanho válido.");
+            } else {
+                tamanho = this.JCBTamanhoGerencia.getSelectedItem().toString();
+            }
+            if (this.JTableGerenciaCategoria.getSelectedRow() == -1) {
+                throw new Mensagem("Primeiro selecione uma categoria para alterar.");
+            } else {
+                id = Integer.parseInt(this.JTableGerenciaCategoria.getValueAt(this.JTableGerenciaCategoria.getSelectedRow(), 0).toString());
+            }
+
+            if (this.objetocategoria.updateCategoriaBD(id, nome, embalagem, tamanho)) {
+                this.JTFNomeGerencia.setText("");
+                this.JCBEmbalagemGerencia.setSelectedIndex(0);
+                this.JCBTamanhoGerencia.setSelectedIndex(0);
+                JOptionPane.showMessageDialog(rootPane, "Categoria alterada com sucesso!");
+            }
+        } catch (Mensagem erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        } catch (Exception erro2) {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro: " + erro2.getMessage());
+        } finally {
+            carregaTabela();
+   }  
+        
+
+    }//GEN-LAST:event_JBAlternarActionPerformed
+
+    private void JBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarActionPerformed
+this.dispose();       
+    }//GEN-LAST:event_JBCancelarActionPerformed
+
+    private void JBApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBApagarActionPerformed
+try {
+            int id = 0;
+            if (this.JTableGerenciaCategoria.getSelectedRow() == -1) {
+                throw new Mensagem("Primeiro Selecione uma Categoria para APAGAR");
+            } else {
+                id = Integer.parseInt(this.JTableGerenciaCategoria.getValueAt(this.JTableGerenciaCategoria.getSelectedRow(), 0).toString());
+            }
+            int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar esta Categoria?");
+            if (respostaUsuario == 0) {
+                if (this.objetocategoria.deleteCategoriaBD(id)) {
+                    this.JTFNomeGerencia.setText("");
+                    this.JCBEmbalagemGerencia.setSelectedIndex(0);
+                    this.JCBTamanhoGerencia.setSelectedIndex(0);
+                    JOptionPane.showMessageDialog(rootPane, "Categoria Apagada com sucesso!");
+                }
+            }
+        } catch (Mensagem erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        } finally {
+            carregaTabela();
+        }
+    
+    }//GEN-LAST:event_JBApagarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +286,16 @@ public class FrmGerenciaCategoria extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JBAlternar;
+    private javax.swing.JButton JBApagar;
+    private javax.swing.JButton JBCancelar;
+    private javax.swing.JComboBox<String> JCBEmbalagemGerencia;
+    private javax.swing.JComboBox<String> JCBTamanhoGerencia;
+    private javax.swing.JTextField JTFNomeGerencia;
+    private javax.swing.JTable JTableGerenciaCategoria;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
