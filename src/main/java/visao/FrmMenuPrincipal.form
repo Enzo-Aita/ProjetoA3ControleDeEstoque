@@ -79,30 +79,31 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jLabel1" min="-2" pref="525" max="-2" attributes="0"/>
-                      <EmptySpace pref="20" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Component id="JBCadastrarProduto" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="JBGerenciarProduto" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="203" max="-2" attributes="0"/>
-                              <Component id="JBSair" min="-2" pref="126" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="JBEntradaSaida" min="-2" pref="126" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="209" max="-2" attributes="0"/>
+                      <Component id="JBSair" min="-2" pref="126" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="JBGerenciarProduto" min="-2" pref="163" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="JBCadastrarProduto" max="32767" attributes="0"/>
+                      <Component id="JBEntradaSaida" pref="163" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="JBCadastrarCategoria" pref="179" max="32767" attributes="0"/>
+                  <Component id="JBGerenciaCategoria" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -111,13 +112,24 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="JBCadastrarProduto" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="JBGerenciarProduto" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="JBEntradaSaida" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                      <Component id="JBCadastrarProduto" min="-2" pref="43" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      <Component id="JBCadastrarCategoria" min="-2" pref="44" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="49" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="JBGerenciaCategoria" pref="45" max="32767" attributes="0"/>
+                  <Component id="JBEntradaSaida" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="JBGerenciarProduto" min="-2" pref="48" max="-2" attributes="0"/>
+              <EmptySpace pref="41" max="32767" attributes="0"/>
               <Component id="JBSair" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
           </Group>
@@ -159,11 +171,21 @@
     </Component>
     <Component class="javax.swing.JButton" name="JBEntradaSaida">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Entrada e Sa&#xed;da"/>
+        <Property name="text" type="java.lang.String" value="Movimento Estoque"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBEntradaSaidaActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="JBGerenciaCategoria">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Gerencia Categoria"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="JBCadastrarCategoria">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cadastrar Categoria"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

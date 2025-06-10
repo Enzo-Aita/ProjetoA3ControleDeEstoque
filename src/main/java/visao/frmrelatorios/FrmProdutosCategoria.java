@@ -1,4 +1,4 @@
-package visao.frmcategoria;
+package visao.frmrelatorios;
 
 import java.util.Map;
 import modelo.Produto;
