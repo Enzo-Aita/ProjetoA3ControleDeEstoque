@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,7 +19,7 @@ public class ProdutoDao extends ConexaoDao {
         try {
             Statement stmt = this.getConexao().createStatement();
 
-            ResultSet res = stmt.executeQuery("SELECT * FROM tb_produtos");
+            ResultSet res = stmt.executeQuery("SELECT * FROM tb_produtodao");
             while (res.next()) {
 
                 int id = res.getInt("id");
@@ -31,6 +30,8 @@ public class ProdutoDao extends ConexaoDao {
                 int quantidade = res.getInt("quantidade");
                 int quantidademax = res.getInt("quantidademax");
                 int quantidademin = res.getInt("quantidademin");
+                
+                
 
                 Produto objeto = new Produto(id, produto, preco, unidade, categoria, quantidade, quantidademax, quantidademin);
                 minhaLista.add(objeto);
@@ -54,7 +55,7 @@ public class ProdutoDao extends ConexaoDao {
 
         try {
             Statement stmt = this.getConexao().createStatement();
-            ResultSet res = stmt.executeQuery("SELECT MAX(id) id FROM tb_produtos");
+            ResultSet res = stmt.executeQuery("SELECT MAX(id) id FROM tb_produtodao");
             res.next();
             maiorID = res.getInt("id");
             stmt.close();
@@ -67,7 +68,7 @@ public class ProdutoDao extends ConexaoDao {
 
     public boolean insertProdutoBD(Produto objeto) {
 
-        String sql = "INSERT INTO tb_produtos(id,produto,preco,unidade,categoria,quantidade,quantidademax,quantidademin) VALUES(?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO tb_produtodao(id,produto,preco,unidade,categoria,quantidade,quantidademax,quantidademin) VALUES(?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
 
@@ -94,7 +95,7 @@ public class ProdutoDao extends ConexaoDao {
         try {
             Statement stmt = this.getConexao().createStatement();
 
-            stmt.executeUpdate("DELETE FROM tb_produtos WHERE id =" + id);
+            stmt.executeUpdate("DELETE FROM tb_produtodao WHERE id =" + id);
 
             stmt.close();
         } catch (SQLException erro) {
@@ -104,7 +105,7 @@ public class ProdutoDao extends ConexaoDao {
     }
 
     public boolean updateProdutoBD(Produto objeto) {
-        String sql = "UPDATE tb_produtos SET produto = ?, preco = ?, unidade = ?, categoria = ?, "
+        String sql = "UPDATE tb_produtodao SET produto = ?, preco = ?, unidade = ?, categoria = ?, "
                 + "quantidade = ?, quantidademax = ?, quantidademin = ? WHERE id = ?";
 
         try {
@@ -123,8 +124,7 @@ public class ProdutoDao extends ConexaoDao {
             stmt.close();
 
             
-            System.out.println("DEBUG: Linhas afetadas na atualização: " + rowsAffected);
-
+            
             return rowsAffected > 0;
         } catch (SQLException erro) {
             System.out.println("Erro:" + erro);
@@ -133,7 +133,7 @@ public class ProdutoDao extends ConexaoDao {
     }
 
     public boolean updatePrecoBD(int id, int novoPreco) {
-        String sql = "UPDATE tb_produtos SET preco = ? WHERE id = ?";
+        String sql = "UPDATE tb_produtodao SET preco = ? WHERE id = ?";
 
         try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
@@ -151,7 +151,7 @@ public class ProdutoDao extends ConexaoDao {
     }
 
     public boolean updateQuantidadeBD(int id, int novaQuantidade) {
-        String sql = "UPDATE tb_produtos SET quantidade = ? WHERE id = ?";
+        String sql = "UPDATE tb_produtodao SET quantidade = ? WHERE id = ?";
 
         try (Connection conn = this.getConexao(); PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -172,7 +172,7 @@ public class ProdutoDao extends ConexaoDao {
         try {
             Statement stmt = this.getConexao().createStatement();
 
-            ResultSet res = stmt.executeQuery("SELECT * FROM tb_produtos WHERE id =" + id);
+            ResultSet res = stmt.executeQuery("SELECT * FROM tb_produtodao WHERE id =" + id);
             res.next();
 
             objeto.setProduto(res.getString("produto"));
