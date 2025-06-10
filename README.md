@@ -1,11 +1,11 @@
 ## Controle de Estoque !
 
-| Nome                                  | RA          |
-| ------------------------------------- | ----------- |
-| Andreas Honorato Moreno Schoenawa     | 10725114852 |
-| Enzo Aita Naime                       | 10725113352 |
-| Giovanna Bosquerolli                  | 10725110130 |
-| Pedro Borges                          | 10725114947 |
+| Nome                                  | RA          | GI Nome  
+| ------------------------------------- | ----------- | ---------------------- |
+| Andreas Honorato Moreno Schoenawa     | 10725114852 | Andre, andreashonorato |
+| Enzo Aita Naime                       | 10725113352 | Enzo-Aita              |
+| Giovanna Bosquerolli                  | 10725110130 | camil, gibosquerolli   |
+| Pedro Borges                          | 10725114947 | pedroborges578         |
 
 
 | Tecnologia     /     Versão      |                                    
