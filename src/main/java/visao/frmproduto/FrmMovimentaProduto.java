@@ -61,7 +61,6 @@ public class FrmMovimentaProduto extends javax.swing.JFrame {
      
      private void mostrarHistorico(int idProduto) {
        try {
-        // Obtém o nome do produto para exibir no título
         String nomeProduto = "";
         for (int i = 0; i < JTableProduto.getRowCount(); i++) {
             if ((int)JTableProduto.getValueAt(i, 0) == idProduto) {
