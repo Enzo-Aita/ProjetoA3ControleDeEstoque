@@ -1,20 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package visao.frmcategoria;
 
-/**
- *
- * @author camil
- */
-public class FrmCadastroCategoria extends javax.swing.JFrame {
+import javax.swing.JOptionPane;
+import modelo.Categoria;
+import visao.Mensagem;
 
-    /**
-     * Creates new form FrmCadastroCategoria
-     */
+
+public class FrmCadastroCategoria extends javax.swing.JFrame {
+private Categoria objetocategoria;
+
+
+
+ 
+     
     public FrmCadastroCategoria() {
         initComponents();
+        this.objetocategoria = new Categoria();
     }
 
     /**
@@ -26,21 +27,137 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        JTFNomeCadastraCategoria = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        JBCancelar = new javax.swing.JButton();
+        JBCadastrar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        JCBEmbalagemCadastroCategoria = new javax.swing.JComboBox<>();
+        JCBTamanhoCadastroCategoria = new javax.swing.JComboBox<>();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("Nome:");
+
+        jLabel2.setText("Embalagem:");
+
+        jLabel3.setText("Tamanho:");
+
+        JBCancelar.setText("Cancelar");
+        JBCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBCancelarActionPerformed(evt);
+            }
+        });
+
+        JBCadastrar.setText("Cadastrar");
+        JBCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBCadastrarActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Myanmar Text", 0, 24)); // NOI18N
+        jLabel4.setText("Cadastro Categoria");
+
+        JCBEmbalagemCadastroCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plastico", "Lata", "Vidro" }));
+
+        JCBTamanhoCadastroCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pequeno", "Medio", "Grande" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(151, 151, 151)
+                .addComponent(JBCancelar)
+                .addGap(51, 51, 51)
+                .addComponent(JBCadastrar)
+                .addContainerGap(110, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(127, 127, 127))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JCBTamanhoCadastroCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JCBEmbalagemCadastroCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(JTFNomeCadastraCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel4)
+                .addGap(73, 73, 73)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(JTFNomeCadastraCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(JCBEmbalagemCadastroCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jLabel3)
+                .addGap(28, 28, 28)
+                .addComponent(JCBTamanhoCadastroCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JBCancelar)
+                    .addComponent(JBCadastrar)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void JBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarActionPerformed
+this.dispose();      
+    }//GEN-LAST:event_JBCancelarActionPerformed
+
+    private void JBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastrarActionPerformed
+try {
+            String nome = "";
+            String embalagem = "";
+            String tamanho = "";
+
+            if (this.JTFNomeCadastraCategoria.getText().length() < 2) {
+                throw new Mensagem("Nome deve conter ao menos 2 caracteres.");
+            } else {
+                nome = this.JTFNomeCadastraCategoria.getText();
+            }
+
+            if (this.JCBEmbalagemCadastroCategoria.getSelectedIndex() == -1) {
+                throw new Mensagem("Selecione um tipo de embalagem.");
+            } else {
+                embalagem = (String) this.JCBEmbalagemCadastroCategoria.getSelectedItem();
+            }
+
+            if (this.JCBTamanhoCadastroCategoria.getSelectedIndex() == -1) {
+                throw new Mensagem("Selecione um tamanho.");
+            } else {
+                tamanho = (String) this.JCBTamanhoCadastroCategoria.getSelectedItem();
+            }
+
+            if (this.objetocategoria.insertCategoriaBD(nome,embalagem, tamanho)) {
+                JOptionPane.showMessageDialog(null, "Categoria Cadastrada com Sucesso!");
+                this.JTFNomeCadastraCategoria.setText("");
+                this.JCBEmbalagemCadastroCategoria.setSelectedIndex(0);
+                this.JCBTamanhoCadastroCategoria.setSelectedIndex(0);
+            }
+
+        } catch (Mensagem erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        } catch (Exception erro2) {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado: " + erro2.getMessage());
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_JBCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +195,14 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JBCadastrar;
+    private javax.swing.JButton JBCancelar;
+    private javax.swing.JComboBox<String> JCBEmbalagemCadastroCategoria;
+    private javax.swing.JComboBox<String> JCBTamanhoCadastroCategoria;
+    private javax.swing.JTextField JTFNomeCadastraCategoria;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }
