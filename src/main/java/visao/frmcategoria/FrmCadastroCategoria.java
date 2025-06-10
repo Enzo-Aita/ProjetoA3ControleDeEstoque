@@ -38,6 +38,7 @@ private Categoria objetocategoria;
         JCBTamanhoCadastroCategoria = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastro categoria");
 
         jLabel1.setText("Nome:");
 

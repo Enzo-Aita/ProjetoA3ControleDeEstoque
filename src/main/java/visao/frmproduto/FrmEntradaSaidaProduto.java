@@ -12,12 +12,12 @@ import visao.Mensagem;
 
 
 
-public class FrmAdicionarSubtrairProduto extends javax.swing.JFrame {
+public class FrmEntradaSaidaProduto extends javax.swing.JFrame {
 
     private MovimentaEstoque movimentaEstoque;
     private Produto objetoproduto;
 
-    public FrmAdicionarSubtrairProduto() {
+    public FrmEntradaSaidaProduto() {
         initComponents();
         
         this.objetoproduto = new Produto();
@@ -78,14 +78,14 @@ public class FrmAdicionarSubtrairProduto extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(JTableProduto);
 
-        JBAdicionar.setText("Adicionar");
+        JBAdicionar.setText("Entrada");
         JBAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBAdicionarActionPerformed(evt);
             }
         });
 
-        JBSubtrair.setText("Subtrair");
+        JBSubtrair.setText("Saída");
         JBSubtrair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBSubtrairActionPerformed(evt);
@@ -115,7 +115,7 @@ public class FrmAdicionarSubtrairProduto extends javax.swing.JFrame {
                         .addComponent(JBSubtrair)
                         .addGap(47, 47, 47)
                         .addComponent(JBCancelar)
-                        .addGap(0, 134, Short.MAX_VALUE)))
+                        .addGap(0, 143, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -212,20 +212,21 @@ public class FrmAdicionarSubtrairProduto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmAdicionarSubtrairProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmEntradaSaidaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmAdicionarSubtrairProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmEntradaSaidaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmAdicionarSubtrairProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmEntradaSaidaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmAdicionarSubtrairProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmEntradaSaidaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmAdicionarSubtrairProduto().setVisible(true);
+                new FrmEntradaSaidaProduto().setVisible(true);
             }
         });
     }

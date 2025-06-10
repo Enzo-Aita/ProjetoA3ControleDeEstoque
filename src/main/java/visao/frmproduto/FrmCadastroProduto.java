@@ -61,7 +61,7 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cadastro de Alunos");
+        setTitle("Cadastro de Produtos");
 
         jLabel1.setText("Produto:");
 

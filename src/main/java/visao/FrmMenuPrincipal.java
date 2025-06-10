@@ -7,7 +7,7 @@ import visao.frmrelatorios.FrmProdutosCategoria;
 import visao.frmrelatorios.FrmBalancoFinanceiro;
 import visao.frmrelatorios.FrmListaPrecos;
 import visao.frmproduto.FrmCadastroProduto;
-import visao.frmproduto.FrmAdicionarSubtrairProduto;
+import visao.frmproduto.FrmEntradaSaidaProduto;
 import visao.frmproduto.FrmGerenciaProduto;
 import visao.frmrelatorios.FrmProdutosQuantidadeMaxima;
 import visao.frmrelatorios.FrmProdutosQuantidadeMinima;
@@ -45,7 +45,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         JMenuProdutoCategoria = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cadastro de Aluno");
+        setTitle("Cadastro de Produtos");
 
         jLabel1.setFont(new java.awt.Font("Stencil", 0, 48)); // NOI18N
         jLabel1.setText("CONTROLE DE ESTOQUE");
@@ -71,14 +71,14 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        JBEntradaSaida.setText("Movimento Estoque");
+        JBEntradaSaida.setText("Movimentar Estoque");
         JBEntradaSaida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBEntradaSaidaActionPerformed(evt);
             }
         });
 
-        JBGerenciaCategoria.setText("Gerencia Categoria");
+        JBGerenciaCategoria.setText("Gerenciar Categoria");
         JBGerenciaCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBGerenciaCategoriaActionPerformed(evt);
@@ -118,7 +118,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(JMenuProdutosMinimos);
 
-        JMenuProdutoMaximo.setText("Produtos abaixo da quantidade máxima");
+        JMenuProdutoMaximo.setText("Produtos acima da quantidade máxima");
         JMenuProdutoMaximo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JMenuProdutoMaximoActionPerformed(evt);
@@ -226,7 +226,7 @@ objeto.setVisible(true); // TODO add your handling code here:
     }//GEN-LAST:event_JBGerenciarProdutoActionPerformed
 
     private void JBEntradaSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBEntradaSaidaActionPerformed
-        FrmAdicionarSubtrairProduto objeto = new FrmAdicionarSubtrairProduto();
+        FrmEntradaSaidaProduto objeto = new FrmEntradaSaidaProduto();
         objeto.setVisible(true);
     }//GEN-LAST:event_JBEntradaSaidaActionPerformed
 

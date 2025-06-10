@@ -86,7 +86,7 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Gerenciamento de Alunos");
+        setTitle("Gerenciamento de Produtos");
 
         JTableProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

@@ -35,7 +35,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="JMenuProdutoMaximo">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Produtos abaixo da quantidade m&#xe1;xima"/>
+                <Property name="text" type="java.lang.String" value="Produtos acima da quantidade m&#xe1;xima"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMenuProdutoMaximoActionPerformed"/>
@@ -56,7 +56,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="Cadastro de Aluno"/>
+    <Property name="title" type="java.lang.String" value="Cadastro de Produtos"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
@@ -166,7 +166,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="JBEntradaSaida">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Movimento Estoque"/>
+        <Property name="text" type="java.lang.String" value="Movimentar Estoque"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBEntradaSaidaActionPerformed"/>
@@ -174,7 +174,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="JBGerenciaCategoria">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Gerencia Categoria"/>
+        <Property name="text" type="java.lang.String" value="Gerenciar Categoria"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBGerenciaCategoriaActionPerformed"/>
