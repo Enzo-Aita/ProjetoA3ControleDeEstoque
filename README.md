@@ -46,7 +46,7 @@
 
 ➞RF006 - Cadastro de Categorias, O sistema deve permitir o registro de novas categorias, informando dados como nome da categoria, embalagem e tamanho.
 
-## Banco de Dados 
+## 📊 Banco de Dados 
 Para executar o projeto, é preciso criar um banco de dados com base no script fornecido: 
 
 1º Localize o arquivo banco.sql do projeto.
