@@ -45,3 +45,13 @@
 ➞RF005 - Saída de Estoque, O sistema deve permitir o registro da entrada de produtos, atualizando a quantidade disponível no estoque.
 
 ➞RF006 - Cadastro de Categorias, O sistema deve permitir o registro de novas categorias, informando dados como nome da categoria, embalagem e tamanho.
+
+## Banco de Dados 
+Para executar o projeto, é preciso criar um banco de dados com base no script fornecido: 
+
+1º Localize o arquivo banco.sql do projeto.
+
+2ºExecute o script em sua instância local usando o MySQL.
+
+3ºIsso ira criar o banco de dados db_produtos com todas as tabelas.
+
